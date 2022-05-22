@@ -22,7 +22,35 @@
             <link rel="stylesheet" href="{{ asset('admin2/assets/css/slick.css') }}">
             <link rel="stylesheet" href="{{ asset('admin2/assets/css/nice-select.css') }}">
             <link rel="stylesheet" href="{{ asset('admin2/assets/css/style.css') }}">
-   </head>
+  
+            <style>
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #000000;
+  background-color: #FAFF03;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #000000;
+  position:center;
+  margin-right :20px;
+}
+
+.button:hover {background-color: #ff6680}
+
+.button:active {
+  background-color: #ff6680;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+</style>
+  
+        </head>
 
    <body>
     <!-- Preloader Start -->
@@ -89,9 +117,11 @@
                 <div class="single-slider slider-height d-flex align-items-center" data-background="{{ asset('admin2/assets/img/hero/pic1.jpg') }}">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="col text-center">
                                 <div class="hero__caption">
                                     <h1>Let's Find Your Job With Us!</h1>
+                                    <button class="button" >FIND JOB</button>
+                                    <button class="button" >POST JOB</button>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +130,7 @@
                             <div class="col-xl">
 								
 								
-                                <!-- form -->
+                                <!-- form 
                                 <form action="#" class="search-box">
                                     <div class="input-form">
                                         <input type="text" name="jobName" id="jobName" placeholder="Job Tittle or keyword" data-column="0">
@@ -137,12 +167,12 @@
                 
                                             </select>
                                         </div>
-                                    </div> -->
+                                    </div> 
                                     
                                     <div class="search-form">
                                         <a href="#">Find</a>
                                     </div>	
-                                </form>	
+                                </form>	-->
                             </div>
                         </div>
                     </div>

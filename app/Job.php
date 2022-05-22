@@ -14,7 +14,8 @@ class Job extends Model
     ];
 
 
-    //public function states(){
-        //return $this->belongsTo(State::class, 'jobLocation');
-    //}
+    public function employer(){
+        //One to many(inverse)
+        return $this->belongsTo('App\Employer');
+    }
 }

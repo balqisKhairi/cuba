@@ -73,11 +73,11 @@
             <th>No</th>
             <th>Picture</th>
             <th>Name</th>
-            <th>Desc</th>
+             <!--<th>Desc</th>-->
             <th>Location</th>
-           <th>Salary</th>
+            <!--<th>Salary</th>-->
            <th>Skill Required</th>
-           <th>Type</th>
+            <!--<th>Type</th>-->
             <th >Action</th>
         </tr>
         </thead>
@@ -88,18 +88,18 @@
             <td>{{ $app->id }}</td>
             <td><img src="{{ asset($app->jobPic) }}" width='100' height='100' class="img img-responsive"/></td>
             <td style="width:10%">{{ $app->jobName }}</td>
-            <td style="width:20%">{{ $app->jobDesc}}</td>
+            <!--<td style="width:20%">{{ $app->jobDesc}}</td> -->
             <td>{{ $app->jobLocation}}</td>
-            <td>{{ $app->jobPay}}</td>
+            <!-- <td>{{ $app->jobPay}}</td>-->
             <td>{{ $app->jobSkill}}</td>
-            <td>{{ $app->jobType}}</td>
+            <!-- <td>{{ $app->jobType}}</td>-->
             <td style="width:250px;">
 
                <!-- <form action="{{ route('applications.destroy',$app->id) }}" method="POST"> -->
    
-                    <a class="btn btn-info" href="{{ route('applications.show',$app->id) }}">VIEW DETAIL</a>
+                    <a class="btn btn-info" href="{{ route('jobs.show',$app->id) }}">VIEW DETAIL</a>
     
-                    <a class="btn btn-primary" href="{{ route('applications.edit',$app->id) }}">APPLY</a>
+                    <a class="btn btn-primary" href="{{ route('jobs.show',$app->id) }}">APPLY</a>
    
                     </td>
                      </tr>

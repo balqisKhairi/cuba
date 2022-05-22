@@ -14,17 +14,10 @@ class CreateApplicationsTable extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('student_id')->nullable();
+            $table->id();
+            $table->unsignedInteger('userId')->nullable();
             $table->unsignedInteger('job_id')->nullable();
-           
             $table->timestamps();
-        });
-
-        Schema::table('applications', function (Blueprint $table) {
-            $table->foreign('student_id')->references('id')->on('users');
-            $table->foreign('job_id')->references('id')->on('jobs');
-           
         });
     }
 

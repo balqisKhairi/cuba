@@ -11,4 +11,9 @@ class Employer extends Model
     protected $fillable = [
         'emploCompName','emploEmail','emploPassword','emploNum'
     ];
+
+    public function jobs(){
+        //One to many
+        return $this->hasMany('App\Jobs');
+    }
 }
