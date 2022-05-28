@@ -120,8 +120,8 @@
                             <div class="col text-center">
                                 <div class="hero__caption">
                                     <h1>Let's Find Your Job With Us!</h1>
-                                    <button class="button" >FIND JOB</button>
-                                    <button class="button" >POST JOB</button>
+                                     <a href= "{{ route('jobs.index') }}" button class="button">FIND JOB</a>
+                                     <a href= "{{ route('jobs.index') }}" button class="button">POST JOB</a>
                                 </div>
                             </div>
                         </div>
