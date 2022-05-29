@@ -89,9 +89,8 @@ class StuddentController extends Controller
     public function update(Request $request, Studdent $studdent)
     {
         $studdent->update($request->all());
-  
-        return redirect()->route('studdents.index')
-                        ->with('success','Studdent updated successfully');
+       return redirect()->route('studdents.index')
+                       ->with('success','Studdent updated successfully');
     }
 
     /**

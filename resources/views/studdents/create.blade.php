@@ -42,14 +42,14 @@
                    Gender
                 </label>
                 <div class="form-check">
-                <input type="radio" name="studGender" class="form-check-input" id="genderM" value="M" >
+                <input type="radio" name="studGender" class="form-check-input" id="genderM" value="Male" >
             <label for="genderM" class="form-check-label">
                 Male
         </label>
             </div>
         </div>
         <div class="form-check">
-                <input type="radio" name="studGender" class="form-check-input" id="genderF" value="F" >
+                <input type="radio" name="studGender" class="form-check-input" id="genderF" value="Female" >
             <label for="genderF" class="form-check-label">
                 Female
         </label>
@@ -76,21 +76,34 @@
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Password:</strong>
-                <input type="text" class="form-control" name="studPassword" placeholder="password">
+                <input type="password" class="form-control" name="studPassword" placeholder="password">
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Certificate (IF ANY):</strong>
-                <input type="text" class="form-control" name="studCertificate" placeholder="Certificate">
+                <input type="file" class="form-control" name="studCertificate" placeholder="Certificate">
             </div>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-12">
-            <div class="form-group">
+        <!--<div class="col-md-6">
+            <div class="form-group row">
                 <strong>Job status:</strong>
-                <input type="text" class="form-control" name="studStatus" placeholder="Certificate">
+                <input type="radio" class="form-check-input" name="studStatus" value="Jobless" >Jobless</input>
+                    <input type="radio" class="form-check-input" name="studStatus" value="Have Job" >Have Job</input>
+            </div>
+        </div>-->
+
+        <div class="col-md-6">
+            <div class="form-group">
+               <lable for ="studStatus">
+                   STATUS
+                </label>
+                <div class="form-check">
+                <input type="radio" name="studStatus" class="form-check-input"  value="JOBLESS" > JOBLESS </input> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="studStatus" class="form-check-input"  value="HAVE JOB" > HAVE JOB </input>
             </div>
         </div>
+       
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         

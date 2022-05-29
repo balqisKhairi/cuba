@@ -25,18 +25,18 @@
         @method('PUT')
    
          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <!--<div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
                     <input type="text" name="studName" value="{{ $studdent->studName }}" class="form-control" placeholder="Name"></input>
                 </div>
-            </div>
+            </div> 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>IC Number:</strong>
                     <input type="text" class="form-control" name="studIC" value="{{ $studdent->studIC }}" placeholder="IC Number"></input>
                 </div>
-            </div>
+            </div>-->
             <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                <lable for ="studGender">
@@ -55,20 +55,20 @@
                 Female
         </label>
             </div>
-        </div>
+        </div> 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone Number:</strong>
-                    <input type="text" class="form-control" name="studNum" value="{{ $studdent->studNum }}" placeholder="phone number"></input>
+                    <input type="text" textarea class="form-control" name="studNum" value="{{ $studdent->studNum }}" placeholder="phone number"></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Address:</strong>
-                    <input type="text" class="form-control" name="studAddress" value="{{ $studdent->studAddress }}" placeholder="Address"></input>
+                    <input type="text" class="form-control"  name="studAddress" value="{{ $studdent->studAddress }}" placeholder="Address"></input>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <!--<div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
                     <input type="text" class="form-control" name="studEmail" value="{{ $studdent->studEmail }}" placeholder="Email"></input>
@@ -79,19 +79,34 @@
                     <strong>Password:</strong>
                     <input type="text" class="form-control" name="studPassword" value="{{ $studdent->studPassword }}" placeholder="Password"></input>
                 </div>
-            </div>
+            </div> -->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Certificate (IF ANY):</strong>
-                    <input type="text" class="form-control" name="studCertificate" value="{{ $studdent->studCertificate}}" placeholder="Certificate"></input>
+                    <input type="file" class="form-control" name="studCertificate" value="{{ $studdent->studCertificate}}" placeholder="Certificate"></input>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <!--<div class="col-xs-24 col-sm-12 col-md-24">
                 <div class="form-group">
                     <strong>Job status:</strong>
-                    <input type="text" class="form-control" name="studStatus" value="{{ $studdent->studStatus}}" placeholder="Status"></input>
+                    <input type="radio" class="form-check-input" name="studStatus" value="{{ $studdent->studStatus}}" >Jobless</input>
+                    <input type="radio" class="form-check-input" name="studStatus" value="{{ $studdent->studStatus}}" >Have Job</input>
                 </div>
+            </div>-->
+
+            <div class="col-md-6">
+            <div class="form-group">
+               <lable for ="studStatus">
+                   STATUS
+                </label>
+                <div class="form-check">
+                <input type="radio" name="studStatus" class="form-check-label"  value="{{ $studdent->studStatus}}" > JOBLESS </input> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="studStatus" class="form-check-label"  value="{{ $studdent->studStatus}}" > HAVE JOB </input>
+            
             </div>
+        </div>
+
+        
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-primary" href="{{ route('studdents.index') }}"> Back</a>
