@@ -39,7 +39,7 @@
             <td>{{ $s->studNum }}</td>
             <td>{{ $s->studAddress }}</td>
             <td>{{ $s->studEmail }}</td>
-            <td>{{ $s->studCertificate }}</td>
+            <td><a href= "{{ Storage::url($s->studCertificate) }} "></a></td>
             <td>{{ $s->studStatus }}</td>
             <td>{{ $s->created_at }}</td>
             <td>

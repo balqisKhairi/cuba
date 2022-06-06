@@ -37,10 +37,11 @@
             </div>
         </div>
 
+
         <div class="col-xs-4 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Description (Requirement):</strong>
-                <input type="text" class="form-control" name="jobDesc" placeholder="Description and requirement">
+                <textarea name="jobDesc" class="form-control" placeholder="Description and requirement"></textarea>
             </div>
         </div>
 
@@ -48,7 +49,7 @@
             <div class="form-group" name="jobLocation">
             <strong>State:</strong>
             <!--<input type="text" class="form-control" name="jobLocation" placeholder="Description and requirement">-->
-            <select name="jobLocation">
+            <select name="jobLocation" class="form-control">
                    <option value=""> --SELECT--</option>
                    <option value="JOHOR"> JOHOR</option>
                    <option value="KELANTAN"> KELANTAN</option>
@@ -79,16 +80,20 @@
 
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
-                <strong>Skill needed:</strong>
-                <input type="text" class="form-control" name="jobSkill" placeholder="Skill">
-            </div>
+                <strong>Skill:</strong>
+                <select name="skill" class="form-control">
+                    @foreach(App\Skill::all() as $cat)
+                    <option value="{{$cat->id}}">{{$cat->skillName}}</option>
+                    @endforeach
+                </select>
+                 </div>
         </div>
 
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Type:</strong>
                <!-- <input type="text" class="form-control" name="jobType" placeholder="Type">-->
-               <select name="jobType">
+               <select name="jobType" class="form-control">
                    <option value=""> --SELECT--</option>
                    <option value="parttime"> PART TIME</option>
                    <option value="fulltime"> FULLTIME</option>

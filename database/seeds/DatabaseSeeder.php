@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
        // $this->call(StateSeeder::class);
        // $this->call(AdminsTableSeeder::class);
 
-        $skillNeed = [
+        $skills = [
             'COOKING','SEWING','BAKING','MANAGEMENT','PASTRY'
         ];
-        foreach ($skillNeed as $skill){
+        foreach ($skills as $skill){
             Skill::create (['skillName'=>$skill]);
         }
     }

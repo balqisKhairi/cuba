@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Studdent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StuddentController extends Controller
 {
@@ -49,13 +50,15 @@ class StuddentController extends Controller
             //'studCertificate' => 'required',
            // 'studStatus' => 'required',
            
-        ]);
-  
+        ]); 
+
+      
         Studdent::create($request->all());
    
         return redirect()->route('studdents.index')
                         ->with('success','student created successfully.');
     }
+
 
     /**
      * Display the specified resource.

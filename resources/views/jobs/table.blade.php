@@ -37,7 +37,7 @@
             <td>{{ $s->jobDesc}}</td>
             <td>{{ $s->jobLocation}}</td>
             <td>{{ $s->jobPay}}</td>
-            <td>{{ $s->jobSkill}}</td>
+            <td>{{ $s->skillId}}</td>
             <td>{{ $s->jobType}}</td>
             <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">

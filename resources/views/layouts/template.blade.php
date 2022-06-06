@@ -48,6 +48,13 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+      @if(Auth::user()->userType=='employer')
+      <li >
+        <a href="{{ route('jobs.create') }}">
+<button class="btn btn-outline-success">Post Job</button>
+</a>
+      </li>
+@endif
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -110,9 +117,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('employers.index') }}" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-file"></i>
                   <p>List of Employer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-file"></i>
+                  <p>List of Application</p>
                 </a>
               </li>
              <li class="nav-item">

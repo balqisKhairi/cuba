@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\Employer;
+use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\JobPostRequest;
 
 class JobController extends Controller
 {
@@ -40,24 +43,31 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobPostRequest $request)
     {
-        //$request->validate([
-            //'jobPic' => 'required',
-            //'jobName' => 'required',
-            //'jobLocation' => 'required',
-            //'jobPay' => 'required',
-            //'jobSkill' => 'required',
-            //'jobType' => 'required',
-        //]); 
-  
-        $requestData = $request->all();
+        $userId=auth()->user()->id;
+        $employer = Employer::where('userId',$userId)->first();
+        $employerId = $employer->id;
+        Job::create([
+            'userId'=>$userId,
+            'employerId'=>$employerId,
+            'jobPic'=>request('jobPic'),
+            'jobName' =>request('jobName'),
+            'jobDesc' =>request('jobDesc'),
+            'jobLocation' =>request('jobLocation'),
+            'jobPay' =>request('jobPay'),
+            'skillId' =>request('skill'),
+            'jobType' =>request('jobType'),
+
+        ]);
+       
+        /**$requestData = $request->all();
         //Job::create($request->all());
         $fileName = time().$request->file('jobPic')->getClientOriginalName();
         $path = $request->file('jobPic')->storeAs('images',$fileName,'public');
         $requestData["jobPic"] = '/storage/'.$path; 
         Job::create($requestData);
-
+**/
    
         return redirect()->route('jobs.index')
                         ->with('success','Job created successfully.');
@@ -69,7 +79,7 @@ class JobController extends Controller
      * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show($id, Job $job)
     {
         return view('jobs.show',compact('job'));
     }

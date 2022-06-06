@@ -7,11 +7,12 @@ use App\State;
 
 class Job extends Model
 {
+    protected $guarded =[];
     public $table = "jobs";
 
-    protected $fillable = [
-        'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','jobSkill','jobType'
-    ];
+    /**protected $fillable = [
+        'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','skillId','jobType'
+    ];**/
 
 
     public function employer(){

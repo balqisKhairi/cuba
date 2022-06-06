@@ -20,7 +20,7 @@
     </div>
 @endif
    
-<form action="{{ route('studdents.store') }}" method="POST">
+<form action="{{ route('studdents.store') }}" method= "POST" enctype="multipart/form-data">
     @csrf
   
     <div class="row">
@@ -64,7 +64,7 @@
         <div class="col-xs-6 col-sm-6 col-md-12">
             <div class="form-group">
                 <strong>Address:</strong>
-                <input type="text" class="form-control" name="studAddress" placeholder="Address">
+                <textarea name="studAddress" class="form-control"  placeholder="Address"></textarea>
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-12">

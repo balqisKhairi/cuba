@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Studdent;
+use App\Employer;
 
 class User extends Authenticatable
 {
@@ -38,7 +39,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Studdent(){
+    public function studdent(){
         return $this->hasOne(Studdent::class);
+    }
+
+    public function employer(){
+        return $this->hasOne(Employer::class);
     }
 }

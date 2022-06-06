@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Employer;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+
+
 
 class EmployerController extends Controller
 {
@@ -25,10 +29,10 @@ class EmployerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+     public function create()
     {
         return view('employers.create');
-    }
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +40,7 @@ class EmployerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /**public function store(Request $request)
     {
         $request->validate([
             'emploCompName' => 'required',
@@ -50,7 +54,31 @@ class EmployerController extends Controller
    
         return redirect()->route('employers.index')
                         ->with('success','Employer created successfully.');
+    } **/
+
+
+
+    
+    public function store(){
+        $user = User::create([
+            'name'=>request('emploCompName'),
+            'email' =>request('emploEmail'),
+            'userType'=>request('userType'),
+            'password'=>Hash::make(request('emploPassword')),
+        ]);
+
+        Employer::create([
+            'userId'=>$user->id,
+            
+            'emploCompName'=> request ('emploCompName'),
+            'emploEmail'=> request ('emploEmail'),
+            'emploPassword'=>request('emploPassword'),
+            'emploNum'=>request('emploNum'),
+
+        ]);
+        return redirect()->to('login');
     }
+
 
     /**
      * Display the specified resource.
