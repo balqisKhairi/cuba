@@ -93,14 +93,33 @@
               </p>
             </a>
           </li>      
+          @if(Auth::user()->userType=='student')
           <li class="nav-item">
             <a href="" class="nav-link">
+              <i class="nav-icon fas fa-id-badge"></i>
+              <p>
+                My Job
+              </p>
+            </a>
+          </li> 
+          <li class="nav-item">
+                <a href="{{ route('jobs.index') }}" class="nav-link">
+                  <i class="far fa-file"></i>
+                  <p>List of Application</p>
+                </a>
+              </li>
+          @endif
+              
+          @if(Auth::user()->userType=='employer')
+          <li class="nav-item">
+            <a href="{{ route('jobs.myjobs') }}" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
                 My Account
               </p>
             </a>
-          </li>     
+          </li> 
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -116,48 +135,40 @@
                   <p>List of Students</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <a href="" class="nav-link">
                   <i class="far fa-file"></i>
                   <p>List of Employer</p>
                 </a>
-              </li>
+              </li>-->
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('jobs.applicants') }}" class="nav-link">
                   <i class="far fa-file"></i>
                   <p>List of Application</p>
                 </a>
               </li>
+            
              <li class="nav-item">
                 <a href="{{ route('jobs.index') }}" class="nav-link">
                   <i class="far fa-file"></i>
                   <p>List of Job</p>
                 </a>
               </li>
-
+              @endif 
+             
               <li class="nav-item">
-                <a href="{{ route('admins.index') }}" class="nav-link">
-                  <i class="far fa-file"></i>
-                  <p>List of Job for admin view </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('applications.index') }}" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>apply testing</p>
                 </a>
               </li>
-             
-            </ul>
--->
+               </ul>
             <li class="nav-item">
             <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Logout
-              </p>
+              <p> Logout </p>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

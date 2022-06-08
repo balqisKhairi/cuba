@@ -24,6 +24,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');
+
 
 //Test Data
 Route::get('/students', 'StudentController@index')->name('students.index');
@@ -48,7 +50,14 @@ Route::post('employers/store', 'EmployerController@store')->name('employers.stor
 Route::resource('jobs', 'JobController');
 Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
-Route::resource('applications', 'ApplyJobController');
+Route::get('jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');
+Route::post('jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
+Route::get('jobs/applicants', 'JobController@applicants')->name('jobs.applicants');
+
+
+
+
+//others
 Route::resource('admins', 'AdminController');
 //Route::get('/applications', 'ApplyJobController@index')->name('applications.index');
 Route::resource('customsearch', 'CustomSearchController');

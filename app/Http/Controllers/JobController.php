@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Job;
 use App\Employer;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
+
 use App\Http\Requests\JobPostRequest;
 
 class JobController extends Controller
@@ -73,16 +75,40 @@ class JobController extends Controller
                         ->with('success','Job created successfully.');
     }
 
+
+    public function myjobs(){
+        $jobs = Job::where('userId',auth()->user()->id)->get();
+        return view('jobs.myjobs',compact('jobs'));
+    }
+
+
+    public function apply(Request $request,$id){
+        $jobId = Job::find($id);
+        $jobId->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('success','Job Applied Successfully');
+
+    }
+
+    public function applicants(){
+        $applicants = Job::has('users')->where('userId',auth()->user()->id)->get();
+        return view('jobs.applicants',compact('applicants'));
+    }
     /**
      * Display the specified resource.
      *
      * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show($id, Job $job)
+    public function view($id, Job $job)
     {
         return view('jobs.show',compact('job'));
     }
+
+    public function show(Job $job)
+    {
+        return view('jobs.show',compact('job'));
+    }
+    
 
     /**
      * Show the form for editing the specified resource.

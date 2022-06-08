@@ -93,7 +93,7 @@
                                 </div>          
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="{{ route('applications.index') }}" class="btn head-btn2">POST A JOB </a>
+                                    
                                     <a href="{{ route('login') }}" class="btn head-btn2">LOG IN</a>
                                     <a href="{{ route('register') }}" class="btn head-btn2">REGISTER</a>
                                 </div>
@@ -121,7 +121,7 @@
                                 <div class="hero__caption">
                                     <h1>Let's Find Your Job With Us!</h1>
                                      <a href= "{{ route('jobs.index') }}" button class="button">FIND JOB</a>
-                                     <a href= "{{ route('jobs.index') }}" button class="button">POST JOB</a>
+                                     <a href= "{{ route('login') }}" button class="button">POST JOB</a>
                                 </div>
                             </div>
                         </div>
