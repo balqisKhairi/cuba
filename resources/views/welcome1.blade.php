@@ -84,7 +84,7 @@
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
                                             <li><a href="index.html">Home</a></li>
-                                            <li><a href="job_listing.html">Find a Jobs </a></li>
+                                            <li><a href="jobListing1.html">Find a Jobs </a></li>
                                           
                                             
                                             <li><a href="contact.html">Contact</a></li>
@@ -120,7 +120,7 @@
                             <div class="col text-center">
                                 <div class="hero__caption">
                                     <h1>Let's Find Your Job With Us!</h1>
-                                     <a href= "{{ route('jobs.index') }}" button class="button">FIND JOB</a>
+                                     <a href= "{{ route('jobs.alljobs') }}" button class="button">FIND JOB</a>
                                      <a href= "{{ route('login') }}" button class="button">POST JOB</a>
                                 </div>
                             </div>

@@ -51,10 +51,30 @@
       @if(Auth::user()->userType=='employer')
       <li >
         <a href="{{ route('jobs.create') }}">
-<button class="btn btn-outline-success">Post Job</button>
+<button class="btn btn-outline-success">POST JOB</button>
+</a>
+      </li>
+      <li >
+        <a href="{{ route('jobs.myjob') }}">
+<button class="btn btn-outline-success">MY JOB</button>
+</a>
+      </li>
+      <li >
+        <a href="{{ route('jobs.applicant') }}">
+<button class="btn btn-outline-success">APPLICATION</button>
 </a>
       </li>
 @endif
+
+</li>
+@if(Auth::user()->userType=='student')
+      <li >
+<a href= "{{ route('jobs.alljobs') }}" >
+  <button class="button">FIND JOB</button>
+</a>
+</li>
+@endif
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -112,7 +132,7 @@
               
           @if(Auth::user()->userType=='employer')
           <li class="nav-item">
-            <a href="{{ route('jobs.myjobs') }}" class="nav-link">
+            <a href="{{ route('jobs.myjob') }}" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
                 My Account
@@ -142,7 +162,7 @@
                 </a>
               </li>-->
               <li class="nav-item">
-                <a href="{{ route('jobs.applicants') }}" class="nav-link">
+                <a href="{{ route('jobs.applicant') }}" class="nav-link">
                   <i class="far fa-file"></i>
                   <p>List of Application</p>
                 </a>

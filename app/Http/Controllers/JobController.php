@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Job;
 use App\Employer;
 use App\User;
+use App\Studdent;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,12 @@ class JobController extends Controller
        // return view('jobs.index');
     }
 
+    /**public function index()
+    {
+        $jobs = Job::all()take(limit:10);
+        return view('mainpage', compact('jobs'));
+      
+    }**/
     
 
     /**
@@ -48,10 +55,10 @@ class JobController extends Controller
     public function store(JobPostRequest $request)
     {
         $userId=auth()->user()->id;
-        $employer = Employer::where('userId',$userId)->first();
+        $employer = Employer::where('user_id',$userId)->first();
         $employerId = $employer->id;
         Job::create([
-            'userId'=>$userId,
+            'user_id'=>$userId,
             'employerId'=>$employerId,
             'jobPic'=>request('jobPic'),
             'jobName' =>request('jobName'),
@@ -76,9 +83,9 @@ class JobController extends Controller
     }
 
 
-    public function myjobs(){
-        $jobs = Job::where('userId',auth()->user()->id)->get();
-        return view('jobs.myjobs',compact('jobs'));
+    public function myjob(){
+        $jobs = Job::where('user_id',auth()->user()->id)->get();
+        return view('jobs.myjob',compact('jobs'));
     }
 
 
@@ -89,9 +96,29 @@ class JobController extends Controller
 
     }
 
-    public function applicants(){
-        $applicants = Job::has('users')->where('userId',auth()->user()->id)->get();
-        return view('jobs.applicants',compact('applicants'));
+    public function applicant(){
+        $applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
+        return view('jobs.applicant',compact('applicants'));
+    }
+
+    public function alljobs(Request $request){
+
+        $keyword = request ('jobName');
+        $skill = request ('skill_id');
+        $address = request ('jobAddress');
+
+        if($keyword||$skill||$address){
+            $jobs = Job::where('jobName','LIKE','%'.$keyword.'%')
+            ->orWhere('skill_id',$skill)
+            ->orWhere('jobAddress',$address)
+            ->paginate(10);
+            return view('jobs.alljobs',compact('jobs'));
+        }
+        else{
+            $jobs = Job::paginate(10);
+            return view('jobs.alljobs',compact('jobs'));
+        }
+        
     }
     /**
      * Display the specified resource.

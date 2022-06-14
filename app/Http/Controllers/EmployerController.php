@@ -68,7 +68,7 @@ class EmployerController extends Controller
         ]);
 
         Employer::create([
-            'userId'=>$user->id,
+            'user_id'=>$user->id,
             
             'emploCompName'=> request ('emploCompName'),
             'emploEmail'=> request ('emploEmail'),
@@ -76,7 +76,8 @@ class EmployerController extends Controller
             'emploNum'=>request('emploNum'),
 
         ]);
-        return redirect()->to('login');
+        return redirect()->to('login')->
+        with('message','Email Must Be Verified');
     }
 
 

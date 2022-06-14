@@ -73,7 +73,7 @@ class RegisterController extends Controller
         ]);
 
         Studdent::create ([
-            'userId'=>$user->id,
+            'user_id'=>$user->id,
             'studName'=>request('name'),
             'studGender'=>request('studGender'),
             'studEmail'=>request('email'),

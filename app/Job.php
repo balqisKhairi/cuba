@@ -3,17 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 
 class Job extends Model
 {
+
+   // public function getRouteKeyName(){
+       // return'';
+    //} 
+
     //protected $table = "jobs";
     protected $guarded =[];
     
 
-    /**protected $fillable = [
+    protected $fillable = [
         'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','skillId','jobType'
-    ];**/
+    ];
 
 
     public function employer(){

@@ -1,21 +1,34 @@
+
 @section('content')
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>List of Jobs</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('jobs.create') }}"> Add New Job</a>
+                <h2>JOBS AVAILABLE</h2>
+                <form action="{{route('alljobs') }}" method="get">
+                <div class="form-group">
+                    <label> TITLE &nbsp; &nbsp;</label>
+                    <input type="text" name="jobName" class="form-control">
+                </div> &nbsp; &nbsp;
+                <div class="form-group">
+                    <label> SKILL&nbsp; &nbsp; </label>
+                    <select name="skill_id" class="form-control">
+                        <option> Select Skill</option>
+                    @foreach(App\Skill::all() as $cat)
+                    <option value="{{$cat->id}}">{{$cat->skillName}}</option>
+                    @endforeach
+                </select>
+            </div>&nbsp; &nbsp;
+            <div class="form-group">
+                    <label>ADDRESS &nbsp; &nbsp;</label>
+                    <input type="text" name="jobAddress" class="form-control">
+                </div>&nbsp; &nbsp;
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-dark">SEARCH</button>
             </div>
             
         </div>
     </div>
-   
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
    
     <table class="table table-bordered">
         <tr>
@@ -43,14 +56,11 @@
             <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('jobs.show',$s->id) }}">Show</a>
+                    <a class="btn btn-info" href="">Apply</a>
     
-                    <a class="btn btn-primary" href="{{ route('jobs.edit',$s->id) }}">Edit</a>
-   
+                   
                     @csrf
-                    @method('DELETE')
-      
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                  
                 </form>
             </td>
         </tr>

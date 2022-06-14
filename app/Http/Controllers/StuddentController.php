@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class StuddentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['student','verified']);
+    }
+
     /**
      * Display a listing of the resource.
      *

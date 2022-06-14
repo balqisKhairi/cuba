@@ -17,14 +17,18 @@ use App\Http\Controllers\TypeaheadAutocompleteController;
 
 Route::get('/', function () {
     return view('welcome1');
+    
 });
 
-Auth::routes();
+
+
+
+//Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/admin', 'AdminController@index')->name('admin');
-Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');
 
 
 //Test Data
@@ -39,6 +43,8 @@ Route::resource('subjects', 'SubjectController');
 
 //Student
 Route::resource('studdents', 'StuddentController');
+Route::get('user/studdent', 'StuddentController@index');
+
 
 //Employer
 Route::resource('employers', 'EmployerController');
@@ -48,11 +54,21 @@ Route::post('employers/store', 'EmployerController@store')->name('employers.stor
 
 //Job
 Route::resource('jobs', 'JobController');
+//Route::get('/', 'JobController@index');
+Route::get('jobs/alljobs', 'JobController@alljobs')->name('jobs.alljobs');
+Route::get('/jobs', 'JobController@index')->name('jobs.index');
 Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
-Route::get('jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');
+Route::get('jobs/destroy', 'JobController@destroy')->name('jobs.destroy');
+//Route::get('jobs/show', 'JobController@show')->name('jobs.show');
+Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');
+Route::get('jobs/edit', 'JobController@edit')->name('jobs.edit');
+Route::get('jobs/myjob', 'JobController@myjob')->name('jobs.myjob');
 Route::post('jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
-Route::get('jobs/applicants', 'JobController@applicants')->name('jobs.applicants');
+Route::get('jobs/applicant', 'JobController@applicant')->name('jobs.applicant');
+Route::post('/applications/{id}', 'JobController@apply')->name('apply');
+
+
 
 
 
