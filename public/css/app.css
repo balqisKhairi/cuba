@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
-
+@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
@@ -71,12 +70,12 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #000000;
-  text-align: center;
+  color: #212529;
+  text-align: left;
   background-color: #f8fafc;
 }
 
-[tabindex="-1"]:focus(:focus-visible) {
+[tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
 

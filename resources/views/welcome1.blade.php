@@ -126,9 +126,12 @@
                             </div>
                         </div>
                         <!-- Search Box -->
+                        
+                        <div class="container">
                         <div class="row">
-                            <div class="col-xl">
-								
+                            <div class="col-md-12">
+                                <search-component></search-component>
+</div>
 								
                                 <!-- form 
                                 <form action="#" class="search-box">

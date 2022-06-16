@@ -58,9 +58,9 @@
         </div>
         @if(Auth::user()->userType=='student')
         @if(!$job->checkApplication())
-        <form action="{{route('jobs.apply',[$job->id]) }}" method="post"> 
-          @csrf 
-            <button class="btn btn-warning">APPLY</button>  
+        <form action="{{route('jobs.apply',[$job->id]) }}" method="post">
+        @csrf 
+        <button class="btn btn-warning">APPLY</button>
 </form>
 @endif
 @endif

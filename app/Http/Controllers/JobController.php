@@ -120,6 +120,16 @@ class JobController extends Controller
         }
         
     }
+
+    public function searchJob(Request $request){
+        $keyword = $request->get('keyword');
+        $users = Job::where('jobName','LIKE','%'.$keyword.'%')
+        ->orWhere('skill_id','LIKE','%'.$keyword.'%')
+        ->orWhere('jobAddress','LIKE','%'.$keyword.'%')
+        ->limit(5)->get();
+
+    return response()->json($users); 
+    }
     /**
      * Display the specified resource.
      *

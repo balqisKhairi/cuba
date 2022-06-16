@@ -76,8 +76,7 @@ class EmployerController extends Controller
             'emploNum'=>request('emploNum'),
 
         ]);
-        return redirect()->to('login')->
-        with('message','Email Must Be Verified');
+        return redirect()->to('login');
     }
 
 

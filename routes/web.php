@@ -23,8 +23,8 @@ Route::get('/', function () {
 
 
 
-//Auth::routes();
-Auth::routes(['verify' => true]);
+Auth::routes();
+//Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user');
@@ -53,7 +53,7 @@ Route::view('employers','auth.emp-register')->name('employers.registration');
 Route::post('employers/store', 'EmployerController@store')->name('employers.store');
 
 //Job
-Route::resource('jobs', 'JobController');
+//Route::resource('jobs', 'JobController'); nak show apply kene uncommnt ni /nk tngok application kene comment ni
 //Route::get('/', 'JobController@index');
 Route::get('jobs/alljobs', 'JobController@alljobs')->name('jobs.alljobs');
 Route::get('/jobs', 'JobController@index')->name('jobs.index');
@@ -66,9 +66,10 @@ Route::get('jobs/edit', 'JobController@edit')->name('jobs.edit');
 Route::get('jobs/myjob', 'JobController@myjob')->name('jobs.myjob');
 Route::post('jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
 Route::get('jobs/applicant', 'JobController@applicant')->name('jobs.applicant');
-Route::post('/applications/{id}', 'JobController@apply')->name('apply');
+//Route::post('/applications/{id}', 'JobController@apply')->name('apply');
 
-
+//Search job with vuejs
+Route::get('jobs/search', 'JobController@searchJob');
 
 
 
