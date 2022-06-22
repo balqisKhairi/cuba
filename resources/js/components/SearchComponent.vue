@@ -2,11 +2,13 @@
     <div >
         <input type="text" class="form-control"
         placeholder="What Are You Searching For?" v-on:keyup="searchJob"
-        v-model="keyword">{{results}}</input>
+        v-model="keyword">
         <div class="card-footer" v-if="keyword.length">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a></a>
+            <li class="list-group-item" v-for="result in results">
+                <a href="'jobs'+ result.id+'/'+results.slug+'/'">
+                    {{result.jobName}}
+                </a>
             </li>
         </ul>
 

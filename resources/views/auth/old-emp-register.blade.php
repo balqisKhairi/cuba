@@ -1,12 +1,14 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
-<hr>
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-            <form method="POST" action="{{ route('employers.store') }}">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Employer Registration') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('employers.store') }}">
                         @csrf
 
                         <input type="hidden" value="employer" name="userType">
@@ -85,9 +87,9 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div>
-
 @endsection

@@ -53,20 +53,20 @@ Route::view('employers','auth.emp-register')->name('employers.registration');
 Route::post('employers/store', 'EmployerController@store')->name('employers.store');
 
 //Job
-//Route::resource('jobs', 'JobController'); nak show apply kene uncommnt ni /nk tngok application kene comment ni
-//Route::get('/', 'JobController@index');
+Route::resource('jobs', 'JobController'); //nak show apply kene uncommnt ni /nk tngok application kene comment ni
+Route::get('/', 'JobController@index'); //nak ke page depan kena cooment ni
 Route::get('jobs/alljobs', 'JobController@alljobs')->name('jobs.alljobs');
 Route::get('/jobs', 'JobController@index')->name('jobs.index');
 Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
 Route::get('jobs/destroy', 'JobController@destroy')->name('jobs.destroy');
-//Route::get('jobs/show', 'JobController@show')->name('jobs.show');
+Route::get('jobs/show', 'JobController@show')->name('jobs.show'); // nk tngok yg ad button apply kene comment ni
 Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');
 Route::get('jobs/edit', 'JobController@edit')->name('jobs.edit');
 Route::get('jobs/myjob', 'JobController@myjob')->name('jobs.myjob');
 Route::post('jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
 Route::get('jobs/applicant', 'JobController@applicant')->name('jobs.applicant');
-//Route::post('/applications/{id}', 'JobController@apply')->name('apply');
+Route::post('/applications/{id}', 'JobController@apply')->name('apply');
 
 //Search job with vuejs
 Route::get('jobs/search', 'JobController@searchJob');
