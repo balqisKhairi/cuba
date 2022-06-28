@@ -28,7 +28,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user');
-Route::get('/admin', 'AdminController@index')->name('admin');
+//Route::get('/admin', 'AdminController@index')->name('admin');
 
 
 //Test Data
@@ -44,6 +44,7 @@ Route::resource('subjects', 'SubjectController');
 //Student
 Route::resource('studdents', 'StuddentController');
 Route::get('user/studdent', 'StuddentController@index');
+Route::post('studdents/upload', 'StuddentController@store')->name('studdents.upload');
 
 
 //Employer
@@ -53,29 +54,44 @@ Route::view('employers','auth.emp-register')->name('employers.registration');
 Route::post('employers/store', 'EmployerController@store')->name('employers.store');
 
 //Job
-Route::resource('jobs', 'JobController'); //nak show apply kene uncommnt ni /nk tngok application kene comment ni
-Route::get('/', 'JobController@index'); //nak ke page depan kena cooment ni
-Route::get('jobs/alljobs', 'JobController@alljobs')->name('jobs.alljobs');
+//Route::resource('jobs', 'JobController'); //nak show apply kene uncommnt ni /nk tngok application kene comment ni//nk edit kene uncomment ni
+//Route::get('/', 'JobController@index'); //nak ke page depan kena cooment ni
+Route::get('jobs/alljobs', 'JobController@alljobs')->name('alljobs');
 Route::get('/jobs', 'JobController@index')->name('jobs.index');
 Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
 Route::get('jobs/destroy', 'JobController@destroy')->name('jobs.destroy');
 Route::get('jobs/show', 'JobController@show')->name('jobs.show'); // nk tngok yg ad button apply kene comment ni
 Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');
-Route::get('jobs/edit', 'JobController@edit')->name('jobs.edit');
+//Route::get('jobs/edit', 'JobController@edit')->name('jobs.edit');
+//Route::put('jobs/update', 'JobController@update')->name('jobs.update');
 Route::get('jobs/myjob', 'JobController@myjob')->name('jobs.myjob');
 Route::post('jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
 Route::get('jobs/applicant', 'JobController@applicant')->name('jobs.applicant');
 Route::post('/applications/{id}', 'JobController@apply')->name('apply');
+Route::get('jobs/{job}/edit', 'JobController@edit')->name('jobs.edit');
+Route::put('jobs/{job}', 'JobController@update')->name('jobs.update');
+
+//Admin
+//Route::get('jobs/{job}/editStatus', 'JobController@editStatus')->name('jobs.editStatus');
+//Route::put('jobs/{job}', 'JobController@updateStatus')->name('jobs.updateStatus');
+
+
 
 //Search job with vuejs
 Route::get('jobs/search', 'JobController@searchJob');
 
+//Admin
+Route::resource('admins', 'AdminController');
+Route::get('/admins', 'AdminController@index')->name('admins.index');
+Route::view('admins','auth.admin-register')->name('admins.registration');
+Route::post('admins/store', 'AdminController@store')->name('admins.store');
+Route::get('admins/create', 'AdminController@create')->name('admins.create');
 
-
+//Certificate
+Route::post('certificates/upload', 'CertificateController@store')->name('certificates.upload');
 
 //others
-Route::resource('admins', 'AdminController');
 //Route::get('/applications', 'ApplyJobController@index')->name('applications.index');
 Route::resource('customsearch', 'CustomSearchController');
 Route::get('/typeahead_autocomplete', [TypeaheadAutocompleteController::class, 'index']);

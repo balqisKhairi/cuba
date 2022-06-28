@@ -1,10 +1,12 @@
-
+@extends('layouts.main')
 @section('content')
-<div class="row">
+
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            <div class="container">
+            <div class="row">
                 <h2>JOBS AVAILABLE</h2>
                 <form action="{{route('alljobs') }}" method="get">
+                <div class="form-inline">
                 <div class="form-group">
                     <label> TITLE &nbsp; &nbsp;</label>
                     <input type="text" name="jobName" class="form-control">
@@ -19,7 +21,7 @@
                 </select>
             </div>&nbsp; &nbsp;
             <div class="form-group">
-                    <label>ADDRESS &nbsp; &nbsp;</label>
+                    <label>LOCATION &nbsp; &nbsp;</label>
                     <input type="text" name="jobAddress" class="form-control">
                 </div>&nbsp; &nbsp;
 
@@ -29,6 +31,7 @@
             
         </div>
     </div>
+    <hr>
    
     <table class="table table-bordered">
         <tr>
@@ -56,7 +59,7 @@
             <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="">Apply</a>
+                    <a class="btn btn-info" href="{{ route('register') }}">Apply</a>
     
                    
                     @csrf

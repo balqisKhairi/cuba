@@ -27,6 +27,7 @@
            <th>Salary</th>
            <th>Skill Required</th>
            <th>Type</th>
+           <th>Status</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($jobs as $s)
@@ -40,17 +41,28 @@
             <td>{{ $s->jobPay}}</td>
             <td>{{ $s->skillId}}</td>
             <td>{{ $s->jobType}}</td>
-            <td>
+           <td>
+            @if($s->jobStatus == 0)
+        <span class="badge bg-primary">PENDING</span>
+        @elseif($s->jobStatus == 1)
+        <span class="badge bg-success">APPROVED</span>
+        @else
+        <span class="badge bg-danger">REJECTED</span>
+       @endif
+        </td>
+        <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('jobs.show',$s->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('jobs.show',$s->id) }}">Show</a>
     
+                   
                     <a class="btn btn-primary" href="{{ route('jobs.edit',$s->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger remove-user">Delete</button>
+                    
                 </form>
             </td>
         </tr>
@@ -60,4 +72,6 @@
         <button style="width:100%" class="btn btn-warning btn-lg">Browse All Jobs</button>
 </div>
 </div>
+
 @endsection
+

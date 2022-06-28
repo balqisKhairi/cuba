@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Studdent;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -57,7 +58,11 @@ class StuddentController extends Controller
            
         ]); 
 
-      
+       // auth()->user()->files()->create([
+            /**'title' => $request->get('title'),
+            'overview' => $request->get('overview'),
+            'price' => $request->get('price')
+          ]); **/
         Studdent::create($request->all());
    
         return redirect()->route('studdents.index')

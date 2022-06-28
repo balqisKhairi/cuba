@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Studdent;
 use App\Employer;
+use App\Certificate;
 
 class User extends Authenticatable 
 {
@@ -45,5 +46,9 @@ class User extends Authenticatable
 
     public function employer(){
         return $this->hasOne(Employer::class);
+    }
+
+    public function certificate(){
+      return $this->hasMany(Certificate::class);
     }
 }

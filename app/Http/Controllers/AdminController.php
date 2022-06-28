@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Job;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -15,19 +17,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //$admins = Admin::all();
+        $admins = Admin::all();
         //dd($students);
         return view('admins.index',compact('admins'));
        // return view('subjects.index');
     }
 
-    public function index2()
-    {
-        $jobs = Job::all();
-        //dd($jobs);
-        return view('admins.index', compact('jobs'));
-       // return view('jobs.index');
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -44,19 +40,26 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'adminEmail' => 'required',
-            'adminPassword' => 'required',
-    
+    public function store(){
+        $user = User::create([
+            'name'=>request('adminName'),
+            'email' =>request('adminEmail'),
+            'userType'=>request('userType'),
+            'password'=>Hash::make(request('adminPassword')),
         ]);
-  
-        Admin::create($request->all());
-   
-        return redirect()->route('admins.index')
-                        ->with('success','Admin created successfully.');
+
+        Admin::create([
+            'user_id'=>$user->id,
+            
+            'adminName'=> request ('adminName'),
+            'adminEmail'=> request ('adminEmail'),
+            'adminPassword'=>request('adminPassword'),
+            
+
+        ]);
+        return redirect()->to('login');
     }
+
 
     /**
      * Display the specified resource.

@@ -23,7 +23,7 @@ class CreateStuddentsTable extends Migration
             $table->string('studEmail')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('studPassword');
-            $table->string('studCertificate')->nullable();
+            $table->string('certificateId')->nullable();
             $table->string('studStatus')->nullable();
             $table->rememberToken();
             $table->timestamps();

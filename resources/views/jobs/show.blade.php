@@ -37,6 +37,7 @@
                                 <li>Creative Agency</li>
                                 <li><i class="fas fa-map-marker-alt"></i>{{$job->jobLocation}}</li>
                                 <li><i class="fas fa-map-marker-alt"></i>RM{{$job->jobPay}}</li>
+                                <li><i class="fas fa-map-marker-alt"></i>{{$job->jobStatus}}</li>
                             </ul>
                         </div>
                     </div>
@@ -90,9 +91,17 @@
                       
                   </ul>
                  <div class="apply-btn2">
-                    <a href="#" class="btn">Apply Now</a>
+                 @if(Auth::user()->userType=='student')
+        @if(!$job->checkApplication())
+        <form action="{{route('jobs.apply',[$job->id]) }}" method="post">
+        @csrf 
+         <button class="btn">Apply Now</button> <br></br>
+         <a href=""  button class="btn">View Company</button></a>
                  </div>
                </div>
+</form>
+@endif
+@endif
                 <div class="post-details4  mb-50">
                 </main>
 

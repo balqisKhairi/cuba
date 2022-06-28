@@ -69,7 +69,7 @@
 </li>
 @if(Auth::user()->userType=='student')
       <li >
-<a href= "{{ route('jobs.alljobs') }}" >
+<a href= "{{ route('alljobs') }}" >
   <button class="button">FIND JOB</button>
 </a>
 </li>
@@ -182,6 +182,47 @@
                   <p>apply testing</p>
                 </a>
               </li>
+
+              @if(Auth::user()->userType=='admin')
+          <li class="nav-item">
+            <a href="{{ route('jobs.myjob') }}" class="nav-link">
+              <i class="nav-icon fas fa-id-badge"></i>
+              <p>
+                My Account
+              </p>
+            </a>
+          </li> 
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Record
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('studdents.index') }}" class="nav-link">
+                  <i class="far fa-file"></i>
+                  <p>List of Students</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-file"></i>
+                  <p>List of Employer</p>
+                </a>
+              </li>
+             
+             <li class="nav-item">
+                <a href="{{ route('jobs.index') }}" class="nav-link">
+                  <i class="far fa-file"></i>
+                  <p>List of Job</p>
+                </a>
+              </li>
+              @endif 
+
                </ul>
             <li class="nav-item">
             <a href="{{ route('logout') }}"
@@ -275,6 +316,11 @@
 <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> 
+
+
+
 </body>
 </html>
  

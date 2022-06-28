@@ -18,7 +18,7 @@ class Job extends Model
     
 
     protected $fillable = [
-        'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','skillId','jobType'
+        'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','skillId','jobType','jobStatus'
     ];
 
 

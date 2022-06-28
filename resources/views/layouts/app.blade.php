@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/dist/img/favicon.ico') }}">
+    
+    
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -48,6 +50,10 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('employers.registration') }}">{{ __('Employer Registration') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admins.registration') }}">{{ __('Admin Registration') }}</a>
                             </li>
 
                             @if (Route::has('register'))

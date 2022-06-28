@@ -67,6 +67,7 @@ class JobController extends Controller
             'jobPay' =>request('jobPay'),
             'skillId' =>request('skill'),
             'jobType' =>request('jobType'),
+            'jobStatus' =>request('jobStatus'),
 
         ]);
        
@@ -79,7 +80,7 @@ class JobController extends Controller
 **/
    
         return redirect()->route('jobs.index')
-                        ->with('success','Job created successfully.');
+                        ->with('success','Job has been successfully submitted pending for approval');
     }
 
 
@@ -104,13 +105,13 @@ class JobController extends Controller
     public function alljobs(Request $request){
 
         $keyword = request ('jobName');
-        $skill = request ('skill_id');
-        $address = request ('jobAddress');
+        $skill = request ('skillId');
+        $address = request ('jobLocation');
 
         if($keyword||$skill||$address){
             $jobs = Job::where('jobName','LIKE','%'.$keyword.'%')
-            ->orWhere('skill_id',$skill)
-            ->orWhere('jobAddress',$address)
+            ->orWhere('skillId',$skill)
+            ->orWhere('jobLocation',$address)
             ->paginate(10);
             return view('jobs.alljobs',compact('jobs'));
         }
@@ -124,12 +125,15 @@ class JobController extends Controller
     public function searchJob(Request $request){
         $keyword = $request->get('keyword');
         $users = Job::where('jobName','LIKE','%'.$keyword.'%')
-        ->orWhere('skill_id','LIKE','%'.$keyword.'%')
-        ->orWhere('jobAddress','LIKE','%'.$keyword.'%')
+        ->orWhere('skillId','LIKE','%'.$keyword.'%')
+        ->orWhere('jobLocation','LIKE','%'.$keyword.'%')
         ->limit(5)->get();
 
     return response()->json($users); 
     }
+
+
+   
     /**
      * Display the specified resource.
      *
@@ -159,6 +163,7 @@ class JobController extends Controller
         return view('jobs.edit',compact('job'));
     }
 
+    
     /**
      * Update the specified resource in storage.
      *
@@ -169,7 +174,7 @@ class JobController extends Controller
     public function update(Request $request, Job $job)
     {
         $job->update($request->all());
-  
+        
         return redirect()->route('jobs.index')
                         ->with('success','Job updated successfully');
     }

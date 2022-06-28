@@ -24,6 +24,8 @@
         @csrf
         @method('PUT')
    
+
+        @if(Auth::user()->userType=='employer')
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -73,13 +75,25 @@
                     <input type="text" name="jobType" value="{{ $job->jobType }}" class="form-control" placeholder="type">
                 </div>
             </div>
-
-           
+            @endif
+            @if(Auth::user()->userType=='admin')
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Approval</strong>
+                <select name="jobStatus" class="form-control">
+                  <option value="0" @if($job->jobStatus==0)selected @endif>Pending</option>
+                  <option value="1" @if($job->jobStatus==1)selected @endif>Approve</option>
+                  <option value="2" @if($job->jobStatus==2)selected @endif>Reject</option>
+                </select>
+</div>
+</div>
+@endif
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-primary" href="{{ route('jobs.index') }}"> Back</a>
             </div>
         </div>
    
+  
     </form>
 @endsection

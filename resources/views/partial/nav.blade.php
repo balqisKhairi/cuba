@@ -29,6 +29,7 @@
                                     <a href="{{ route('login') }}" class="btn head-btn2">LOG IN</a>
                                     <a href="{{ route('register') }}" class="btn head-btn2">STUDENT</a>
                                     <a href="{{ route('employers.registration') }}" class="btn head-btn2">EMPLOYER</a>
+                                   
                                 </div>
 								
 								 

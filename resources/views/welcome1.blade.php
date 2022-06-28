@@ -70,7 +70,7 @@
                             <div class="col text-center">
                                 <div class="hero__caption">
                                     <h1>Let's Find Your Job With Us!</h1>
-                                     <a href= "{{ route('jobs.alljobs') }}" button class="button">FIND JOB</a>
+                                     <a href= "{{ route('alljobs') }}" button class="button">FIND JOB</a>
                                      <a href= "{{ route('login') }}" button class="button">POST JOB</a>
                                 </div>
                             </div>
@@ -320,6 +320,8 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="{{ asset('admin2/assets/js/plugins.js') }}"></script>
         <script src="{{ asset('admin2/assets/js/main.js') }}"></script>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
     </body>
 </html>
