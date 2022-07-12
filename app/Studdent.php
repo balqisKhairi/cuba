@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+
 
 class Studdent extends Model
 {
@@ -14,9 +14,10 @@ class Studdent extends Model
     //];
 
     protected $guarded =[];
+    public $table = "studdents";
 
-    public function user()
-    {
-      return $this->belongsTo(User::class);
-    }
+    public function certificates(){
+      //One to many
+      return $this->hasMany('App\Certificates');
+  }
 }

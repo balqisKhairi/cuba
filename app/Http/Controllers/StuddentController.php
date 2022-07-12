@@ -69,7 +69,28 @@ class StuddentController extends Controller
                         ->with('success','student created successfully.');
     }
 
+    public function certificate(Request $request){
 
+        $this->validate($request,[
+            'certificate' =>'required|mimes:pdf,doc,docx|max:20000',
+        ]);
+        
+        $user_id = auth()->user()->id;
+        $certificate = $request->file('certificate')
+        ->store('public/files');
+
+        Studdent::where('user_id',$user_id)->update(
+            ['certificate'=>$certificate
+        ]);
+        return redirect()->route('studdents.index')
+        ->with('success','certificate created Uploaded successfully.');
+}
+
+
+public function myAcc(){
+    $studdents = Studdent::where('user_id',auth()->user()->id)->get();
+    return view('studdents.myAcc',compact('studdents'));
+}
     /**
      * Display the specified resource.
      *
@@ -102,7 +123,7 @@ class StuddentController extends Controller
     public function update(Request $request, Studdent $studdent)
     {
         $studdent->update($request->all());
-       return redirect()->route('studdents.index')
+       return redirect()->route('studdents.show')
                        ->with('success','Studdent updated successfully');
     }
 

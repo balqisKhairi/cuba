@@ -9,7 +9,7 @@ use App\Studdent;
 use Auth;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\JobPostRequest;
+//use App\Http\Requests\JobPostRequest;
 
 class JobController extends Controller
 {
@@ -52,13 +52,13 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(JobPostRequest $request)
+    public function store()
     {
-        $userId=auth()->user()->id;
-        $employer = Employer::where('user_id',$userId)->first();
+        $user_id=auth()->user()->id;
+        $employer = Employer::where('user_id',$user_id)->first();
         $employerId = $employer->id;
         Job::create([
-            'user_id'=>$userId,
+            'user_id'=>$user_id,
             'employerId'=>$employerId,
             'jobPic'=>request('jobPic'),
             'jobName' =>request('jobName'),
@@ -84,9 +84,9 @@ class JobController extends Controller
     }
 
 
-    public function myjob(){
+    public function myjobs(){
         $jobs = Job::where('user_id',auth()->user()->id)->get();
-        return view('jobs.myjob',compact('jobs'));
+        return view('jobs.myjobs',compact('jobs'));
     }
 
 

@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -55,7 +57,7 @@
 </a>
       </li>
       <li >
-        <a href="{{ route('jobs.myjob') }}">
+        <a href="{{ route('jobs.myjobs') }}">
 <button class="btn btn-outline-success">MY JOB</button>
 </a>
       </li>
@@ -115,6 +117,13 @@
           </li>      
           @if(Auth::user()->userType=='student')
           <li class="nav-item">
+            <a href="{{ route('studdents.myAcc') }}" class="nav-link">
+              <i class="nav-icon fas fa-id-badge"></i>
+              <p>
+                My Account
+              </p>
+            </a>
+          </li> <li class="nav-item">
             <a href="" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
@@ -128,11 +137,18 @@
                   <p>List of Application</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{ route('certificates.mycertificate') }}" class="nav-link">
+                  <i class="far fa-file"></i>
+                  <p>My Certificates</p>
+                </a>
+              </li>
           @endif
               
           @if(Auth::user()->userType=='employer')
           <li class="nav-item">
-            <a href="{{ route('jobs.myjob') }}" class="nav-link">
+            <a href="{{ route('jobs.myjobs') }}" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
                 My Account
@@ -155,12 +171,7 @@
                   <p>List of Students</p>
                 </a>
               </li>
-              <!--<li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-file"></i>
-                  <p>List of Employer</p>
-                </a>
-              </li>-->
+             
               <li class="nav-item">
                 <a href="{{ route('jobs.applicant') }}" class="nav-link">
                   <i class="far fa-file"></i>
@@ -175,17 +186,11 @@
                 </a>
               </li>
               @endif 
-             
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>apply testing</p>
-                </a>
-              </li>
+            
 
               @if(Auth::user()->userType=='admin')
           <li class="nav-item">
-            <a href="{{ route('jobs.myjob') }}" class="nav-link">
+            <a href="{{ route('jobs.myjobs') }}" class="nav-link">
               <i class="nav-icon fas fa-id-badge"></i>
               <p>
                 My Account
@@ -221,6 +226,14 @@
                   <p>List of Job</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{ route('certificates.index') }}" class="nav-link">
+                  <i class="far fa-file"></i>
+                  <p>My Certificates</p>
+                </a>
+              </li>
+              
               @endif 
 
                </ul>

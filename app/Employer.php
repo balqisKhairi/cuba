@@ -8,7 +8,7 @@ class Employer extends Model
 {
 
     protected $guarded =[];
-   public $table = "employers";
+   //public $table = "employers";
 
     /**protected $fillable = [
         'emploCompName','emploEmail','emploPassword','emploNum'

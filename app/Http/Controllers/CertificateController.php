@@ -8,7 +8,6 @@ use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\CertiPostRequest;
 
 class CertificateController extends Controller
 {
@@ -44,22 +43,62 @@ class CertificateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CertiPostRequest $request)
+    public function store(Request $request)
     {
-        $userId=auth()->user()->id;
-        $student = Studdent::where('user_id',$userId)->first();
-        $studId = $student->id;
+
+        $this->validate($request, [
+
+            'certiType' => 'required',
+            'certiType.*' => 'mimes:doc,pdf,docx,zip'
+
+    ]);
+        $user_id=auth()->user()->id;
+        $student = Studdent::where('user_id',$user_id)->first();
+        $studentId = $student->id;
+       //  Certificate::create([
+            //'user_id'=>$user_id,
+            //'studentId'=>$studentId,
+        
+        //]);
+            
+        if($request->hasfile('certiType'))
+         { foreach($request->file('certiType') as $file)
+            {
+                $name=$file->getClientOriginalName();
+                $file->move(public_path().'/files/', $name);  
+                $data[] = $name;
+                  
+            }
+         }
+         Certificate::create([
+            'user_id'=>$user_id,
+            'studentId'=>$studentId,
+         'certiType'=> $file,
+         'certiStatus'=>request('certiStatus'),
+         ]);
+
+         $file->certiType=json_encode($data);
+        //$file->save();
+        /**$cover = $request->file('certiType')
+                 ->store('public/files');
         Certificate::create([
             'user_id'=>$userId,
-            'studId'=>$studId,
+            'studentId'=>$studentId,
             'certiType'=>request('certiType'),
+           //'certiStatus' =>request('certiStatus'),
           
-        ]);
-        return redirect()->route('certificates.index')
+        ]); */
+        
+        return redirect()->route('certificates.mycertificate')
         ->with('success','Certificate has been successfully added');
 
     }
 
+    public function mycertificate(){
+        $certificates = Certificate::where('user_id',auth()->user()->id)->get();
+        return view('certificates.mycertificate',compact('certificates'));
+        
+    }
     /**
      * Display the specified resource.
      *
@@ -79,7 +118,7 @@ class CertificateController extends Controller
      */
     public function edit(Certificate $certificate)
     {
-        //
+        return view('certificates.edit',compact('certificate'));
     }
 
     /**
@@ -91,7 +130,11 @@ class CertificateController extends Controller
      */
     public function update(Request $request, Certificate $certificate)
     {
-        //
+        $certificate->update($request->all());
+        
+        return redirect()->route('certificates.index')
+                        ->with('success','Certificate updated successfully');
+   
     }
 
     /**
@@ -102,6 +145,10 @@ class CertificateController extends Controller
      */
     public function destroy(Certificate $certificate)
     {
-        //
+        $certificate->delete();
+
+       return redirect()->route('certificates.mycertificate')
+       ->with('success','Certificate deleted successfully');
+    
     }
 }

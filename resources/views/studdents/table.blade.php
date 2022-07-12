@@ -26,8 +26,8 @@
             <th>Address</th>
             <th>Email</th>
             <th>Certificate</th>
-            <th>Job status</th>
-            <th>Joined On</th>
+            <th>Job status (Have a job?)</th>
+         
             <th width="280px">Action</th>
         </tr>
         @foreach ($studdents as $s)
@@ -40,8 +40,15 @@
             <td>{{ $s->studAddress }}</td>
             <td>{{ $s->studEmail }}</td>
             <td><a href= "{{ Storage::url($s->studCertificate) }} "></a></td>
-            <td>{{ $s->studStatus }}</td>
-            <td>{{ $s->created_at }}</td>
+            <td>
+            @if($s->studStatus == 0)
+        <span class="badge bg-primary">YES</span>
+        @elseif($s->studStatus == 1)
+        <span class="badge bg-success">NOT YET</span>
+        @else
+        <span class="badge bg-danger">STILL WAITING</span>
+       @endif
+        </td>
             <td>
                 <form action="{{ route('studdents.destroy',$s->id) }}" method="POST">
    

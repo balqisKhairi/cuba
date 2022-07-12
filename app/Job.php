@@ -17,9 +17,9 @@ class Job extends Model
     protected $guarded =[];
     
 
-    protected $fillable = [
+    /**protected $fillable = [
         'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','skillId','jobType','jobStatus'
-    ];
+    ]; **/
 
 
     public function employer(){

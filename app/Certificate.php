@@ -10,15 +10,20 @@ class Certificate extends Model
 {
     
     //protected $table = "certificates";
-   // protected $guarded =[];
+    protected $guarded =[];
   
 
-    protected $fillable = [
-        'certiType'
-    ];
+    /**protected $fillable = [
+        'certiType','certiStatus'
+    ];*/
 
     public function users(){
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    public function studdent(){
+        //One to many(inverse)
+        return $this->belongsTo('App\Studdent');
     }
 
 }
