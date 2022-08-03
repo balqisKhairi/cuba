@@ -65,10 +65,15 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Skill needed:</strong>
-                    <input type="text" name="jobSkill" value="{{ $job->jobSkill }}" class="form-control" placeholder="skill">
+                    <input type="text" name="jobSkill" value="{{ $job->skillId}}" class="form-control" placeholder="skill">
                 </div>
             </div>
 
+            <select name="skill" class="form-control">
+                    @foreach(App\Skill::all() as $cat)
+                    <option value="{{$job->skillId}}">{{$cat->skillName}}</option>
+                    @endforeach
+                </select>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Type:</strong>

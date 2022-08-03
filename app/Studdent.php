@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 
 class Studdent extends Model
@@ -12,6 +13,8 @@ class Studdent extends Model
     //protected $fillable = [
         //'studName','studIC','studGender', 'studNum','studAddress','studEmail','studPassword','certificateId','studStatus'
     //];
+
+    use Notifiable;
 
     protected $guarded =[];
     public $table = "studdents";

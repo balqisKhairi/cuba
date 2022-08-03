@@ -27,6 +27,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
 
+  
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -47,9 +49,8 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+
+      
       @if(Auth::user()->userType=='employer')
       <li >
         <a href="{{ route('jobs.create') }}">
@@ -72,12 +73,18 @@
 @if(Auth::user()->userType=='student')
       <li >
 <a href= "{{ route('alljobs') }}" >
-  <button class="button">FIND JOB</button>
+  <button class="btn btn-outline-success">FIND JOB</button>
 </a>
 </li>
+<li >
+        <a href="{{ route('studdents.mycerti') }}">
+<button class="btn btn-outline-success">MY CERTIFICATE</button>
+</a>
+      </li>
 @endif
+</ul>
 
-    </ul>
+   
   </nav>
   <!-- /.navbar -->
 
@@ -138,12 +145,6 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="{{ route('certificates.mycertificate') }}" class="nav-link">
-                  <i class="far fa-file"></i>
-                  <p>My Certificates</p>
-                </a>
-              </li>
           @endif
               
           @if(Auth::user()->userType=='employer')
@@ -165,12 +166,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('studdents.index') }}" class="nav-link">
-                  <i class="far fa-file"></i>
-                  <p>List of Students</p>
-                </a>
-              </li>
+              
              
               <li class="nav-item">
                 <a href="{{ route('jobs.applicant') }}" class="nav-link">
@@ -268,6 +264,8 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
+</ol>
+
              
             </ol>
           </div><!-- /.col -->

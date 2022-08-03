@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+
 use App\User;
 
 
 class Job extends Model
 {
+
+    use Notifiable;
 
    // public function getRouteKeyName(){
        // return'';
@@ -16,9 +20,10 @@ class Job extends Model
     //protected $table = "jobs";
     protected $guarded =[];
     
+   
 
     /**protected $fillable = [
-        'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','skillId','jobType','jobStatus'
+        'jobPic', 'jobName', 'jobDesc','jobLocation','jobPay','skillId','jobType','jobStatus','slug'
     ]; **/
 
 

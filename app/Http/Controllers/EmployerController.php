@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Employer;
 use App\User;
+use App\Studdent;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -130,4 +132,17 @@ class EmployerController extends Controller
         return redirect()->route('employers.index')
         ->with('success','employer deleted successfully');
     }
+
+    public function sendTestNotification(){
+
+        $user = User::first();
+        $details=[
+            'body'=> 'You received a new notification',
+            'enrollmentText'=> 'Congratulations', 
+            'url'=> url('/'),
+            'thankyou'=> 'You have 7 days to respond',
+    ];
+       //$user->notify(new MyFirstNotification($details));
+       
+   }
 }

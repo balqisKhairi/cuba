@@ -116,4 +116,6 @@ class AdminController extends Controller
         return redirect()->route('admins.index')
         ->with('success','admin deleted successfully');
     }
+
+   
 }

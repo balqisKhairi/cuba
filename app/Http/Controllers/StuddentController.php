@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Studdent;
+use App\Certificate;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -140,4 +141,10 @@ public function myAcc(){
         return redirect()->route('studdents.index')
         ->with('success','Studdent deleted successfully');
     }
+
+    public function mycerti(){
+        $studdents = Certificate::where('user_id',auth()->user()->id)->get();
+        return view('studdents.mycerti',compact('studdents'));
+    }
+
 }

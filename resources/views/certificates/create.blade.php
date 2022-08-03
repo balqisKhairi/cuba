@@ -29,9 +29,9 @@
     @csrf
   
      
-            <div class="input-group control-group increment" >
+            <div class="input-group xpress control-group 1st increment" >
                 <strong>Certificate</strong>
-                <input type="file" name="certiType[]" class="form-control" placeholder="CERTIFICATE">
+                <input type="file" name="certiType[]" class="form-control" placeholder="CERTIFICATE" >
        
         
                 <div class="input-group-btn"> 
@@ -39,8 +39,8 @@
           </div>
         </div>
 
-        <div class="clone hide">
-          <div class="control-group input-group" style="margin-top:10px">
+        <div class="clone d-none">
+          <div class="xpress control-group 1st input-group " style="margin-top:10px">
             <input type="file" name="certiType[]" class="form-control">
             <div class="input-group-btn"> 
               <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
@@ -70,7 +70,7 @@
       });
 
       $("body").on("click",".btn-danger",function(){ 
-          $(this).parents(".control-group").remove();
+          $(this).parents(".xpress").remove();
       });
 
     });

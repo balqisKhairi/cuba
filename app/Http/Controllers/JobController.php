@@ -7,7 +7,11 @@ use App\Employer;
 use App\User;
 use App\Studdent;
 use Auth;
+use Notification;
+use App\Mail\AcceptMail;
+use App\Notifications\MyfirstNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 //use App\Http\Requests\JobPostRequest;
 
@@ -132,6 +136,32 @@ class JobController extends Controller
     return response()->json($users); 
     }
 
+    public function emailView($id){
+
+        $data = User::find($id);
+        ////$applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
+        return view('jobs.email_view',compact('data'));
+    }
+
+    public function send(Request $request,$id){
+        $user = User::find($id);
+        $data = array(
+            'message'=> $request->message
+        );
+        //$user = Job::find($id);
+       // $user->users()->attach(Auth::user()->id);
+        //$details=[
+                //'greeting'=> $request->greeting,
+                //'body'=> $request->body, 
+                //'endpart'=> $request->endpart,
+       // ];
+
+       // Notification::send($data,new MyFirstNotification($details));
+        //$jobId->users()->attach(Auth::user()->id);
+        Mail::to($user->email)->send(new AcceptMail($data));
+        return redirect()->back()->with('success','Email Send Successfully');
+
+    }
 
    
     /**

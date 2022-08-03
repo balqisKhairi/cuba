@@ -30,18 +30,15 @@
                <td>{{$user->studdent->studAddress}}</td>
                <td>{{$user->studdent->studNum}}</td>
               <td>
-                <a href="{{Storage::url($user->studdent->studCertificate)}}">Click Here</a>
+                <a href="{{url('/download/'. $user->certificate)}}">Click Here</a>
             </td>
             <td>
-                <form action="" method="POST">
    
-                    <a class="btn btn-primary" href="">ACCEPT</a>
+                    <a class="btn btn-primary" href="{{ route('jobs.emailView',$user->id) }}">ACCEPT</a>
     
                    
                     <a class="btn btn-primary" href="">REJECT</a>
    
-                   
-                </form>
             </td>
 </tr>
 </tbody>

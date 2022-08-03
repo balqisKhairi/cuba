@@ -13,9 +13,13 @@ class Certificate extends Model
     protected $guarded =[];
   
 
-    /**protected $fillable = [
-        'certiType','certiStatus'
-    ];*/
+    //protected $fillable = [
+     //   'certiType','certiStatus'
+    //];
+
+    public function setFilenamesAttribute($value){
+        $this->attribute['certiType']= json_encode($value);
+    }
 
     public function users(){
         return $this->belongsToMany(User::class)->withTimestamps();

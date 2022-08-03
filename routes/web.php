@@ -22,13 +22,12 @@ Route::get('/', function () {
 
 
 
-
 Auth::routes();
 //Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'UserController@index')->name('user');
-//Route::get('/admin', 'AdminController@index')->name('admin');
+
 
 
 //Test Data
@@ -43,7 +42,6 @@ Route::resource('subjects', 'SubjectController');
 
 //Student
 //Route::resource('studdents', 'StuddentController');
-//Route::get('/studdents', 'StuddentController@index');
 Route::get('/studdents', 'StuddentController@index')->name('studdents.index');
 Route::post('studdents/upload', 'StuddentController@store')->name('studdents.upload');
 Route::get('studdents/myAcc', 'StuddentController@myAcc')->name('studdents.myAcc');
@@ -52,6 +50,8 @@ Route::get('studdents/show', 'StuddentController@show')->name('studdents.show');
 Route::get('studdents/{studdent}/edit', 'StuddentController@edit')->name('studdents.edit');
 Route::put('studdents/{studdent}', 'StuddentController@update')->name('studdents.update');
 Route::get('/studdents/create', 'StuddentController@create')->name('studdents.create');
+Route::get('studdents/mycerti', 'StuddentController@mycerti')->name('studdents.mycerti');
+Route::get('studdents/mycerti', 'StuddentController@mycerti')->name('studdents.mycerti');
 
 
 
@@ -62,6 +62,10 @@ Route::get('/employers', 'EmployerController@index')->name('employers.index');
 Route::view('employers','auth.emp-register')->name('employers.registration');
 Route::post('employers/store', 'EmployerController@store')->name('employers.store');
 
+
+
+
+
 //Job
 //Route::resource('jobs', 'JobController'); //nak show apply kene uncommnt ni /nk tngok application kene comment ni//nk edit kene uncomment ni// nk tngok myjobs also comment
 //Route::get('/', 'JobController@index'); //nak ke page depan kena cooment ni
@@ -71,7 +75,7 @@ Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
 Route::get('jobs/destroy', 'JobController@destroy')->name('jobs.destroy');
 Route::get('jobs/show', 'JobController@show')->name('jobs.show'); // nk tngok yg ad button apply kene comment ni//nk show detail kena comment ni
-//Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view'); 
+Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');  //nak hntr noti kene comment
 Route::get('jobs/edit', 'JobController@edit')->name('jobs.edit');
 Route::put('jobs/update', 'JobController@update')->name('jobs.update');
 Route::get('jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');
@@ -80,16 +84,17 @@ Route::get('jobs/applicant', 'JobController@applicant')->name('jobs.applicant');
 Route::post('/applications/{id}', 'JobController@apply')->name('apply');
 Route::get('jobs/{job}/edit', 'JobController@edit')->name('jobs.edit');
 Route::put('jobs/{job}', 'JobController@update')->name('jobs.update');
+Route::put('jobs/{id}/approve', 'JobController@approval')->name('jobs.approve');
 
-//Admin
-//Route::get('jobs/{job}/editStatus', 'JobController@editStatus')->name('jobs.editStatus');
-//Route::put('jobs/{job}', 'JobController@updateStatus')->name('jobs.updateStatus');
 
+//Email
+Route::get('jobs/emailView/{id}', 'JobController@emailView')->name('jobs.emailView');
+Route::post('/jobs/send/{id}', 'JobController@send')->name('jobs.send');
 
 
 //Search job with vuejs
 Route::get('jobs/search', 'JobController@searchJob');
-
+//Route::resource('jobs', 'JobController');
 //Admin
 Route::resource('admins', 'AdminController');
 Route::get('/admins', 'AdminController@index')->name('admins.index');
@@ -109,6 +114,8 @@ Route::put('certificates/update', 'CertificateController@update')->name('certifi
 Route::get('certificates/mycertificate', 'CertificateController@mycertificate')->name('certificates.mycertificate');
 Route::get('certificates/{certificate}/edit', 'CertificateController@edit')->name('certificates.edit');
 Route::put('certificates/{certificate}', 'CertificateController@update')->name('certificates.update');
+Route::get('certificates/download /{id}', 'CertificateController@download')->name('certificates.download');
+
 
 
 

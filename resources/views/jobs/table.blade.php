@@ -55,13 +55,14 @@
    
                     <a class="btn btn-primary" href="{{ route('jobs.show',$s->id) }}">Show</a>
     
-                   
+                    @if(Auth::user()->userType=='employer')
                     <a class="btn btn-primary" href="{{ route('jobs.edit',$s->id) }}">Edit</a>
-   
+                    
+                    
+                    <a class="btn btn-primary" href="{{ route('jobs.edit',$s->id) }}">Verify</a>
+                    @endif
                     @csrf
-                    @method('DELETE')
-      
-                    <button type="submit" class="btn btn-danger remove-user">Delete</button>
+                    
                     
                 </form>
             </td>

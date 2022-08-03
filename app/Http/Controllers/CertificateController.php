@@ -64,9 +64,10 @@ class CertificateController extends Controller
         if($request->hasfile('certiType'))
          { foreach($request->file('certiType') as $file)
             {
-                $name=$file->getClientOriginalName();
+                //$name=$file->getClientOriginalName();
+                $name=time().rand(1,100).'.'.$file->extension();
                 $file->move(public_path().'/files/', $name);  
-                $data[] = $name;
+                $files[] = $name;
                   
             }
          }
@@ -74,23 +75,13 @@ class CertificateController extends Controller
             'user_id'=>$user_id,
             'studentId'=>$studentId,
          'certiType'=> $file,
+         //$file->certiType = $files,
          'certiStatus'=>request('certiStatus'),
          ]);
 
-         $file->certiType=json_encode($data);
-        //$file->save();
-        /**$cover = $request->file('certiType')
-                 ->store('public/files');
-        Certificate::create([
-            'user_id'=>$userId,
-            'studentId'=>$studentId,
-            'certiType'=>request('certiType'),
-           //'certiStatus' =>request('certiStatus'),
-          
-        ]); */
-        
-        return redirect()->route('certificates.mycertificate')
-        ->with('success','Certificate has been successfully added');
+         $file->certiType=json_encode($files);
+   
+         return back()->with('success','Certificate has been successfully added');
 
     }
 
@@ -98,6 +89,13 @@ class CertificateController extends Controller
         $certificates = Certificate::where('user_id',auth()->user()->id)->get();
         return view('certificates.mycertificate',compact('certificates'));
         
+    }
+
+    public function download($id){
+
+        $data = DB::table('certificates')->where('id',$id)->first();
+        $filepath = storage_path("app/{$data->path}");
+        return \Response::download($filepath);
     }
     /**
      * Display the specified resource.
