@@ -58,38 +58,43 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+     public function store(Request $request)
     {
         $user_id=auth()->user()->id;
         $employer = Employer::where('user_id',$user_id)->first();
         $employerId = $employer->id;
-        Job::create([
-            'user_id'=>$user_id,
-            'employerId'=>$employerId,
-            'jobPic'=>request('jobPic'),
-            'jobName' =>request('jobName'),
-            'jobDesc' =>request('jobDesc'),
-            'jobLocation' =>request('jobLocation'),
-            'jobPay' =>request('jobPay'),
-            'skillId' =>request('skill'),
-            'jobType' =>request('jobType'),
-            'jobStatus' =>request('jobStatus'),
 
-        ]);
+        $requestData = $request->all();
+        $fileName = $request->file('jobPic')->getClientOriginalName();
+        $path = $request->file('jobPic')->storeAs('images',$fileName,'public');
+        $requestData["jobPic"] = '/storage/'.$path; 
+    
+
+        $requestData ['user_id'] = $user_id;
+        $requestData ['employerId'] = $employerId;
+        $requestData['jobName']= $request->jobName;
+        $requestData['jobDesc']= $request->jobDesc;
+        $requestData['jobLocation']= $request->jobLocation;
+        $requestData['jobPay']= $request->jobPay;
+        $requestData['skillId']= $request->skillId;
+        $requestData['jobType']= $request->jobType;
+        $requestData['jobStatus']= $request->jobStatus;
+
+        Job::create($requestData);
        
         /**$requestData = $request->all();
         //Job::create($request->all());
         $fileName = time().$request->file('jobPic')->getClientOriginalName();
         $path = $request->file('jobPic')->storeAs('images',$fileName,'public');
         $requestData["jobPic"] = '/storage/'.$path; 
-        Job::create($requestData);
-**/
+        Job::create($requestData);**/
+
    
-        return redirect()->route('jobs.index')
-                        ->with('success','Job has been successfully submitted pending for approval');
-    }
+        return back()->with('success','Job has been successfully submitted pending for approval');
+   } 
+    
 
-
+   
     public function myjobs(){
         $jobs = Job::where('user_id',auth()->user()->id)->get();
         return view('jobs.myjobs',compact('jobs'));
@@ -230,7 +235,7 @@ class JobController extends Controller
     {
         $job->update($request->all());
         
-        return redirect()->route('jobs.index')
+        return redirect()->route('jobs.myjobs')
                         ->with('success','Job updated successfully');
     }
 

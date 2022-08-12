@@ -1,34 +1,82 @@
 @extends('layouts.template')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Company Details</h2>
-            </div>
-        </div>
-    </div>
+
+<style>
+.btn-primary  {
+  background-color: #ffd338;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+ 
+  cursor: pointer;
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: #555555;
+  color: white;
+
+}
+
+.card-header{
+    color: black;
+}
+
+.table table-hover{
+    
+}
+</style>
+
+
+<div class="card mb-3">
+  <h3 class="card-header" align="center" >Company Details</h3>
+  <div class="card-body">
+  <table class="table table-hover">
+  
+  <tbody>
+    <tr class="table-warning">
+      <th scope="row">Company Name :</th>
+      <td> {{ $employer->emploCompName }}</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Email :</th>
+      <td>{{ $employer->emploEmail }}</td>
+     
+    </tr>
+    
+    <tr class="table-warning">
+      <th scope="row">Password :</th>
+      <td>  {{ $employer->emploPassword }}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Contact Number  :</th>
+      <td> {{ $employer->emploNum }}</td>
+     
+    </tr>
+    
    
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Company Name:</strong>
-                {{ $employer->emploCompName }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                {{ $employer->emploEmail }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Number to Contact:</strong>
-                {{ $employer->emploNum }}
-            </div>
-        </div>
-        <div class="pull-right">
-                <a class="btn btn-primary" onclick="history.back()"> Back</a>
-        </div>
+  </tbody>
+</table>
+
+
+<div class="flex-parent jc-center">
+  <button class="btn btn-primary " type="button" onclick="history.back()">BACK</button>
+ 
+</div>
     </div>
+</div>
 @endsection
+    

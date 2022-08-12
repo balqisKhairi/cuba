@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 use App\User;
-
+use App\Skill;
 
 class Job extends Model
 {
@@ -30,6 +30,11 @@ class Job extends Model
     public function employer(){
         //One to many(inverse)
         return $this->belongsTo('App\Employer');
+    }
+
+    public function skill(){
+        //One to many(inverse)
+        return $this->belongsTo('App\Skill');
     }
 
     public function users(){

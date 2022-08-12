@@ -1,13 +1,42 @@
 @extends('layouts.template')
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            
-        </div>
-       
-    </div>
-</div>
+
+
+<style>
+.card-header{
+    color:#000000;
+    font-size: 16px;
+}
+
+.btn-success{
+    background: rgb(255,207,35);
+    color: rgb(0,0,0)
+}
+.card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+
+.card-body{
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+
+.table-bordered{
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+    </style>
+
+
+<div class="card border-primary " style="max-width: 60rem;">
+  <div class="card-header">{{ __('CERTIFICATE') }}</div>
+  <div class="card-body">
+  
+
    
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -28,23 +57,18 @@
 <form action="{{ route('certificates.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
   
-     
+    <div class="row">
+
             <div class="input-group xpress control-group 1st increment" >
-                <strong>Certificate</strong>
-                <input type="file" name="certiType[]" class="form-control" placeholder="CERTIFICATE" >
-       
-        
-                <div class="input-group-btn"> 
-            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-          </div>
+               <input type="file" name="certiType[]" class="form-control" placeholder="CERTIFICATE" >
         </div>
+
+        <br>
 
         <div class="clone d-none">
           <div class="xpress control-group 1st input-group " style="margin-top:10px">
             <input type="file" name="certiType[]" class="form-control">
-            <div class="input-group-btn"> 
-              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-            </div>
+           
           </div>
         </div>
 

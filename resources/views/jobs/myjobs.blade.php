@@ -1,12 +1,45 @@
 @extends('layouts.template')
 
 @section('content')
-<div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-            <div class="card">
-                <div class="card-header">{{ __('MY JOB') }}</div>
 
-                <div class="card-body">
+<style>
+.card-header{
+    color:#000000;
+    font-size: 16px;
+}
+
+.btn-success{
+    background: rgb(255,207,35);
+    color: rgb(0,0,0)
+}
+.card {
+         /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        margin-left: 50px;
+}
+
+.card-body{
+       /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+       
+}
+
+.table-bordered{
+        /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+    </style>
+
+
+<div class="card border-primary " style="max-width: 80rem;">
+  <div class="card-header">{{ __('MY JOB') }}</div>
+  <div class="card-body">
+  
+<div class="row">
+
                 <table class="table table-bordered">
         <thead>
             <th>No</th>

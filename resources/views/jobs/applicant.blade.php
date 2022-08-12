@@ -1,14 +1,47 @@
 @extends('layouts.template')
 @section('content')
-<div class="row">
-<div class="row justify-content-center">
+
+<style>
+.card-header{
+    color:#000000;
+    font-size: 16px;
+}
+
+.btn-success{
+    background: rgb(255,207,35);
+    color: rgb(0,0,0)
+}
+.card {
+         /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        margin-left: 50px;
+}
+
+.card-body{
+       /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+       
+}
+
+.table-bordered{
+        /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+    </style>
+
+
+
+<div class="row justify-content-center"  style="max-width: 80rem;">
     <div class="col-md-12">
         @foreach($applicants as $applicant)
             <div class="card">
             <div class="card-header"> {{$applicant->jobName}}</div>
 
             
-            <div class="card-body">
+            <div class="card-body"  style="max-width: 80rem;">
          <table class="table table-bordered">
         <thead>
          <th>Name</th>

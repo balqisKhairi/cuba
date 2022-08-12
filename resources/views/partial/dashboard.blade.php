@@ -15,7 +15,7 @@
                             @endif
                            </div>
 </div>           
-</div>
+
 
 
                          @section('content')

@@ -72,7 +72,7 @@ class CertificateController extends Controller
 
             $filename =$file->getClientOriginalName();
             $file->move('assets',$filename);
-            $data['certiType']= $filename;
+            $data['certiType']='assets/'.$filename;
             //$files[] = $filename;
         }
     }

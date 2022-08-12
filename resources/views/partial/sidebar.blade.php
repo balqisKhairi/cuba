@@ -24,7 +24,7 @@
 
                     <li class="nav-item"><a class="nav-link" href="{{ route('studdents.myJob') }}" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
                     <i class="fas fa-briefcase" style="color: #000000;font-size: 17px;"></i>
-                    <span>My Job</span></a>
+                    <span>My Application</span></a>
 
 
                     <a class="nav-link" href="{{ route('studdents.mycerti')}}" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">

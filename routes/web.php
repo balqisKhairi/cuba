@@ -82,7 +82,7 @@ Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
 Route::get('jobs/destroy', 'JobController@destroy')->name('jobs.destroy');
 Route::get('jobs/{job}/show', 'JobController@show')->name('jobs.show'); // nk tngok yg ad button apply kene comment ni//nk show detail kena comment ni
-Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');  //nak hntr noti kene comment
+//Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');  //nak hntr noti kene comment
 Route::get('jobs/{job}/edit', 'JobController@edit')->name('jobs.edit');
 Route::put('jobs/{job}', 'JobController@update')->name('jobs.update');
 Route::get('jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');

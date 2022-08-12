@@ -2,28 +2,32 @@
 
 @section('content')
 
-
 <style>
-
-
 .card-header{
     color:#000000;
     font-size: 16px;
 }
+
+.btn-success{
+    background: rgb(255,207,35);
+    color: rgb(0,0,0)
+}
 .card {
-        margin: 0 auto; /* Added */
+         /* Added */
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
+        margin-left: 50px;
 }
 
 .card-body{
-        margin: 0 auto; /* Added */
+       /* Added */
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
+       
 }
 
 .table-bordered{
-        margin: 0 auto; /* Added */
+        /* Added */
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
 }
@@ -35,7 +39,7 @@
   <div class="card-body">
   
 <div class="row">
-<div class="row justify-content-center">
+
     <div class="col-md-12">
          <a class="btn btn-success" href="{{ route('certificates.create') }}"> Add Certificate</a>
         <br></br>
@@ -54,9 +58,7 @@
            
             <td>{{$s->certiType}}</td>
            <td>
-
-          
-            @if($s->certiStatus == 0)
+         @if($s->certiStatus == 0)
         <span class="badge bg-primary">PENDING</span>
         @elseif($s->certiStatus == 1)
         <span class="badge bg-success">APPROVED</span>
