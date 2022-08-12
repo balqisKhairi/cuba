@@ -91,15 +91,18 @@
                       
                   </ul>
                  <div class="apply-btn2">
-                 @if(Auth::user()->userType=='student')
+               @if(Auth::user()->userType=='student')
         @if(!$job->checkApplication())
         <form action="{{route('jobs.apply',[$job->id]) }}" method="post">
-        @csrf 
+         
          <button class="btn">Apply Now</button> <br></br>
-         <a href=""  button class="btn">View Company</button></a>
+         @csrf
+        
+
+         <a href="{{route('employers.show',[$job->id]) }}"  button class="btn">View Company</button></a>
                  </div>
                </div>
-</form>
+               </form>
 @endif
 @endif
                 <div class="post-details4  mb-50">

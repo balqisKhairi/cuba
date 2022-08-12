@@ -13,8 +13,8 @@ class Job extends Model
 
     use Notifiable;
 
-   // public function getRouteKeyName(){
-       // return'';
+   //public function getRouteKeyName(){
+       // return'slug';
     //} 
 
     //protected $table = "jobs";

@@ -30,14 +30,12 @@
                <td>{{$user->studdent->studAddress}}</td>
                <td>{{$user->studdent->studNum}}</td>
               <td>
-                <a href="{{url('/download/'. $user->certificate)}}">Click Here</a>
+              <a class="btn btn-primary" href="{{ route('jobs.studCerti',$user->id) }}">VIEW</a>
             </td>
             <td>
    
-                    <a class="btn btn-primary" href="{{ route('jobs.emailView',$user->id) }}">ACCEPT</a>
+                    <a class="btn btn-primary" href="{{ route('jobs.emailView',$user->id) }}">SEND EMAIL</a>
     
-                   
-                    <a class="btn btn-primary" href="">REJECT</a>
    
             </td>
 </tr>

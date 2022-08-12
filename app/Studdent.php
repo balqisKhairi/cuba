@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Certificate;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +22,6 @@ class Studdent extends Model
 
     public function certificates(){
       //One to many
-      return $this->hasMany('App\Certificates');
+      return $this->hasMany('App\Certificate');
   }
 }

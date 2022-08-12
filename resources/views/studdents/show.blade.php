@@ -1,59 +1,100 @@
 @extends('layouts.template')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Student Details</h2>
-            </div>
-        </div>
-    </div>
+    <style>
+.btn-primary  {
+  background-color: #ffd338;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+ 
+  cursor: pointer;
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: #555555;
+  color: white;
+
+}
+
+.card-header{
+    color: black;
+}
+
+.table table-hover{
+    
+}
+</style>
+
+
+<div class="card mb-3">
+  <h3 class="card-header" align="center" >My Profile</h3>
+  <div class="card-body">
+  <table class="table table-hover">
+  
+  <tbody>
+    <tr class="table-warning">
+      <th scope="row">Name :</th>
+      <td>{{ $studdent->studName }}</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">IC Number :</th>
+      <td>{{ $studdent->studIC }}</td>
+     
+    </tr>
+    <tr class="table-warning">
+      <th scope="row">Gender :</th>
+      <td> {{ $studdent->studGender }}</td>
+     
+    </tr>
+    <tr >
+      <th scope="row">Phone Number :</th>
+      <td> {{ $studdent->studNum }}</td>
+    
+    </tr>
+    <tr class="table-warning">
+      <th scope="row">Address :</th>
+      <td> {{ $studdent->studAddress }}</td>
+      
+    </tr>
+    <tr >
+      <th scope="row">Email :</th>
+      <td>{{ $studdent->studEmail }}</td>
+     
+    </tr>
+    <tr class="table-warning">
+      <th scope="row">Job Status :</th>
+            
+      @if($studdent->studStatus == 0)
+      <td>Yes</td>
+        @elseif($studdent->studStatus == 1)
+        <td>Not Yet</td>
+        @else
+        <td>Still Waiting</td>
+       @endif
+      
+    </tr>
    
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {{ $studdent->studName }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>IC Number:</strong>
-                {{ $studdent->studIC }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Gender:</strong>
-                {{ $studdent->studGender }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Phone Number:</strong>
-                {{ $studdent->studNum }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Address:</strong>
-                {{ $studdent->studAddress }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                {{ $studdent->studEmail }}
-            </div>
-        </div>
-       
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Job status:</strong>
-                {{ $studdent->studStatus }}
-            </div>
-        </div>
-        <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('studdents.index') }}"> Back</a>
-        </div>
+  </tbody>
+</table>
+
+
+<div class="flex-parent jc-center">
+  <button class="btn btn-primary " type="button" onclick="history.back()">BACK</button>
+ 
+</div>
     </div>
+</div>
 @endsection

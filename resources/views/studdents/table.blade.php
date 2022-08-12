@@ -1,15 +1,26 @@
+@extends('layouts.template')
 @section('content')
+<style>
+.table {
+
+    color: #000000;
+}
+
+h2, .h2 {
+    font-size: calc(1.325rem + 0.9vw);
+    color: #000000;
+}
+
+</style>
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>List of Students</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('studdents.create') }}"> Add New Student</a>
-            </div>
+            
         </div>
     </div>
-   
+   <br></br>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -25,7 +36,7 @@
             <th>Number Phone</th>
             <th>Address</th>
             <th>Email</th>
-            <th>Certificate</th>
+          
             <th>Job status (Have a job?)</th>
          
             <th width="280px">Action</th>
@@ -39,7 +50,7 @@
             <td>{{ $s->studNum }}</td>
             <td>{{ $s->studAddress }}</td>
             <td>{{ $s->studEmail }}</td>
-            <td><a href= "{{ Storage::url($s->studCertificate) }} "></a></td>
+           
             <td>
             @if($s->studStatus == 0)
         <span class="badge bg-primary">YES</span>

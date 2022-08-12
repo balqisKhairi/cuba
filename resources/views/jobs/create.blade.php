@@ -88,9 +88,10 @@
             <div class="form-group">
                 <strong>Skill:</strong>
                 <select name="skill" class="form-control">
+                    <option selected="true" disabled="disabled"> --SELECT--</option>
                     @foreach(App\Skill::all() as $cat)
-                    <option value="{{$cat->id}}">{{$cat->skillName}}</option>
-                    @endforeach
+                    <option value="{{$cat->id}}">{{$cat->skillName}}  </option>
+                   @endforeach
                 </select>
                  </div>
         </div>
@@ -100,7 +101,7 @@
                 <strong>Type:</strong>
                <!-- <input type="text" class="form-control" name="jobType" placeholder="Type">-->
                <select name="jobType" class="form-control">
-                   <option value=""> --SELECT--</option>
+                   <option selected="true" disabled="disabled"> --SELECT--</option>
                    <option value="parttime"> PART TIME</option>
                    <option value="fulltime"> FULLTIME</option>
 </select>
@@ -111,7 +112,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         
-                <a class="btn btn-primary" href="{{ route('jobs.index') }}"> Back</a>
+                <a class="btn btn-primary" onclick="history.back()"> Back</a>
         </div>
     </div>
    

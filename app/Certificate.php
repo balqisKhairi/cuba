@@ -17,9 +17,6 @@ class Certificate extends Model
      //   'certiType','certiStatus'
     //];
 
-    public function setFilenamesAttribute($value){
-        $this->attribute['certiType']= json_encode($value);
-    }
 
     public function users(){
         return $this->belongsToMany(User::class)->withTimestamps();
@@ -29,5 +26,7 @@ class Certificate extends Model
         //One to many(inverse)
         return $this->belongsTo('App\Studdent');
     }
+
+   
 
 }

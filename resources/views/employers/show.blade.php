@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('employers.index') }}"> Back</a>
+                <a class="btn btn-primary" onclick="history.back()"> Back</a>
         </div>
     </div>
 @endsection

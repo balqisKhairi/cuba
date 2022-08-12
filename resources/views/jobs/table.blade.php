@@ -1,4 +1,16 @@
+@extends('layouts.template')
 @section('content')
+<style>
+.table {
+
+    color: #000000;
+}
+h2, .h2 {
+    font-size: calc(1.325rem + 0.9vw);
+    color: #000000;
+}
+
+</style>
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -53,13 +65,14 @@
         <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">
    
-                    <a class="btn btn-primary" href="{{ route('jobs.show',$s->id) }}">Show</a>
-    
-                    @if(Auth::user()->userType=='employer')
-                    <a class="btn btn-primary" href="{{ route('jobs.edit',$s->id) }}">Edit</a>
-                    
+
+                @if(Auth::user()->userType=='admin')
                     
                     <a class="btn btn-primary" href="{{ route('jobs.edit',$s->id) }}">Verify</a>
+                    @endif
+
+                    @if(Auth::user()->userType=='employer')
+                    <a class="btn btn-primary" href="{{ route('jobs.edit',$s->id) }}">Edit</a>
                     @endif
                     @csrf
                     
@@ -69,9 +82,7 @@
         </tr>
         @endforeach
     </table>
-    <div>
-        <button style="width:100%" class="btn btn-warning btn-lg">Browse All Jobs</button>
-</div>
+    
 </div>
 
 @endsection

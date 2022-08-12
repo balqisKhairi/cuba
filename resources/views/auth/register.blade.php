@@ -1,14 +1,15 @@
 @extends('layouts.main')
 
 @section('content')
-<hr>
 <div class="container">
-<div class="site-section ">
-<div class="container">
-   <div class="row">
-    <div class="col-md-12">
-    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        <div class="card">
+                <div class="card-header">{{ __('Student Registration') }}</div>
+
+                <div class="card-body">
+                <form method="POST" action="{{ route('register') }}">
+                            @csrf
 
                         <input type="hidden" value="student" name="userType">
                         <div class="form-group row">
@@ -89,6 +90,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 @endsection

@@ -3,11 +3,35 @@
     <head>
     <meta charset="utf-8">
         
-         <title>e-JaSD</title>
+         <title>e-JaSDs</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=2">
         
-        @include('partial.head')
+      
+<html class="no-js" lang="zxx">
+    <head>
+<link rel="manifest" href="site.webmanifest">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin2/assets/img/favicon.ico') }}">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="manifest" href="site.webmanifest">
+        
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/flaticon.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/price_rangs.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/slick.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/nice-select.css') }}">
+            <link rel="stylesheet" href="{{ asset('admin2/assets/css/style.css') }}">
+</head>
   
             <style>
 .button {
@@ -54,7 +78,50 @@
     
         <!-- Header Start -->
       
-@include('partial.nav')
+        <header>
+<div class="header-area header-transparrent">
+           <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 col-md-4">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="{{ route('home') }} "><img src="{{ asset('admin2/assets/img/logo/ejasd.png') }}" alt=""></a>
+                            </div>  
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <!-- Main-menu -->
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li></li>
+                                            <li></li>
+                                          
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </nav>
+                                </div>          
+                                <!-- Header-btn -->
+                                <div class="header-btn d-none f-right d-lg-block">
+                                    <a></a>
+                                    <a href="{{ route('login') }}" class="btn head-btn2">LOG IN</a>
+                                    <a href="{{ route('register') }}" class="btn head-btn2">STUDENT</a>
+                                    <a href="{{ route('employers.emp-register') }}" class="btn head-btn2">EMPLOYER</a>
+                                   
+                                </div>
+								
+								 
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+           </div>
+       </div>
+        <!-- Header End -->
+    </header>
 
     <main>
 
@@ -81,155 +148,13 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <search-component></search-component>
-</div>
-								
-                                <!-- form 
-                                <form action="#" class="search-box">
-                                    <div class="input-form">
-                                        <input type="text" name="jobName" id="jobName" placeholder="Job Tittle or keyword" data-column="0">
-                                    </div>
-                                    <div class="select-form">
-                                        <div class="select-itms">
-                                            <select name="jobLocation" id="jobLocation">
-                                            <option disabled value=""> --SELECT--</option>
-                   <option value="JOHOR"> JOHOR</option>
-                   <option value="KELANTAN"> KELANTAN</option>
-                   <option value="KEDAH"> KEDAH</option>
-                   <option value="KUALA LUMPUR"> KUALA LUMPUR</option>
-                   <option value="LABUAN">LABUAN</option>
-                   <option value="MELAKA"> MELAKA</option>
-                   <option value="NEGERI SEMBILAN"> NEGERI SEMBILAN</option>
-                   <option value="PAHANG">PAHANG</option>
-                   <option value="PENANG"> PENANG</option>
-                   <option value="PERAK"> PERAK</option>
-                   <option value="PERLIS">PERLIS</option>
-                   <option value="PUTRAJAYA">PUTRAJAYA</option>
-                   <option value="SABAH">SABAH</option>
-                   <option value="SARAWAK">SARAWAK</option>
-                   <option value="SELANGOR">SELANGOR</option>
-                   <option value="TERENGGANU">TERENGGANU</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                  <!-- <div class="select-form">
-                                        <div class="select-itms">
-                                            <select name="jobSkill" id="jobSkill">
-                                            <option disabled value=""> --SELECT--</option>
-                   <option value="COOKING"> COOKING</option>
-                   <option value="SEWING"> SEWING</option>
-                
-                                            </select>
-                                        </div>
-                                    </div> 
-                                    
-                                    <div class="search-form">
-                                        <a href="#">Find</a>
-                                    </div>	
-                                </form>	-->
                             </div>
+						   </div>
                         </div>
                     </div>
                 </div>
-           
-        <!-- slider Area End-->
-        <!-- Our Services Start -->
-       <!-- <div class="our-services section-pad-t10">
-            <div class="container">
-                Section Tittle 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <h2>Choose Your Skill </h2>
-                        </div>
-                    </div>
-                
-                <div class="row d-flex justify-contnet-center">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-tour"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Sewing</a></h5>
-                               </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-cms"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Design & Development</a></h5> </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-report"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Sales & Marketing</a></h5>
-                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-app"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Mobile Application</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-helmet"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Construction</a></h5> </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-high-tech"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Information Technology</a></h5> </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-real-estate"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Real Estate</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-content"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="job_listing.html">Content Writer</a></h5> </div>
-                        </div>
-                    </div>
-                </div>
-                More Btn 
-                 Section Button 
-               
-            </div>
-        </div> -->
-        <!-- Our Services End -->
-        
-        
-        <!-- How  Apply Process Start-->
+
+      <!-- How  Apply Process Start-->
         <div class="apply-process-area apply-bg pt-50 pb-50" data-background="{{ asset('admin2/assets/img/gallery/how-applybg.png') }}">
             <div class="container">
                 <!-- Section Tittle -->
@@ -277,13 +202,62 @@
              </div>
         </div>
         <!-- How  Apply Process End-->
-        
-         
-        
-
     </main>
-    
 
+
+
+    <!-- Footer Start-->
+    <div class="footer-area footer-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                       <div class="single-footer-caption mb-0">
+                         <div class="single-footer-caption mb-30">
+                             <div class="footer-tittle">
+                                 <h4>About Us</h4>
+                                 <div class="footer-pera">
+                                     <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                                </div>
+                             </div>
+                         </div>
+
+                       </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Contact Info</h4>
+                                <ul>
+                                    <li>
+                                    <p>Address :SMK Dato' Sulaiman, Jalan Simpang Lima / Parit Sulong, Parit Sulong, 83500 Parit Sulong, Johor</p>
+                                    </li>
+                                    <li><a href="#">Phone : +07-418 6214</a></li>
+                                    <li><a href="#">Email : tadbirds @ gmail.com </a> </li>
+                                    <li><a>        jea0015@moe.edu.my </a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                     </div>
+                             </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!--  -->
+               <div class="row footer-wejed justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <!-- logo -->
+                       
+                    </div>
+               </div>
+            </div>
+        </div>
+        
+        <!-- Footer End-->
+    </footer>
   <!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->

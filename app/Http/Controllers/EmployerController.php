@@ -33,7 +33,7 @@ class EmployerController extends Controller
      */
      public function create()
     {
-        return view('employers.create');
+        return view('employers.emp-register');
     } 
 
     /**
@@ -133,16 +133,11 @@ class EmployerController extends Controller
         ->with('success','employer deleted successfully');
     }
 
-    public function sendTestNotification(){
-
-        $user = User::first();
-        $details=[
-            'body'=> 'You received a new notification',
-            'enrollmentText'=> 'Congratulations', 
-            'url'=> url('/'),
-            'thankyou'=> 'You have 7 days to respond',
-    ];
-       //$user->notify(new MyFirstNotification($details));
+    
+    public function myAcc(){
+        $employers = Employer::where('user_id',auth()->user()->id)->get();
+        return view('employers.myAcc',compact('employers'));
+    }
        
-   }
+   
 }

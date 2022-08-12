@@ -6,10 +6,12 @@ use App\Job;
 use App\Employer;
 use App\User;
 use App\Studdent;
+use App\Certificate;
 use Auth;
 use Notification;
 use App\Mail\AcceptMail;
 use App\Notifications\MyfirstNotification;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -106,22 +108,24 @@ class JobController extends Controller
         return view('jobs.applicant',compact('applicants'));
     }
 
+   
+
     public function alljobs(Request $request){
 
         $keyword = request ('jobName');
-        $skill = request ('skillId');
+        $skill = request('skillId');
         $address = request ('jobLocation');
 
         if($keyword||$skill||$address){
             $jobs = Job::where('jobName','LIKE','%'.$keyword.'%')
-            ->orWhere('skillId',$skill)
-            ->orWhere('jobLocation',$address)
-            ->paginate(10);
+                ->orWhere('skillId',$skill)
+                ->orWhere('jobLocation',$address)
+                ->paginate(5);
             return view('jobs.alljobs',compact('jobs'));
         }
         else{
-            $jobs = Job::paginate(10);
-            return view('jobs.alljobs',compact('jobs'));
+            $jobs = Job::paginate(0);
+            return view('jobs.alljobs',compact('jobs'))->with('success','No Result Found');;
         }
         
     }
@@ -178,6 +182,27 @@ class JobController extends Controller
     public function show(Job $job)
     {
         return view('jobs.show',compact('job'));
+    }
+    
+    public function studView(Request $request)
+    {
+        $keyword = request ('jobName');
+        $skill = request('skillId');
+        $address = request ('jobLocation');
+
+        if($keyword||$skill||$address){
+            $jobs = Job::where('jobName','LIKE','%'.$keyword.'%')
+                ->orWhere('skillId',$skill)
+                ->orWhere('jobLocation',$address)
+                ->paginate(5);
+            return view('jobs.studView',compact('jobs'));
+        }
+        else{
+            $jobs = Job::paginate(0);
+            return view('jobs.studView',compact('jobs'))->with('success','No Result Found');;
+        }
+        
+       
     }
     
 

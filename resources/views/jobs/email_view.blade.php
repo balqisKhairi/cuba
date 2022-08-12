@@ -41,7 +41,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" name="send" class="btn btn-primary">Submit</button>
         
-                <a class="btn btn-primary" href=""> Back</a>
+                <a class="btn btn-primary" onclick="history.back()"> Back</a>
         </div>
     </div>
    

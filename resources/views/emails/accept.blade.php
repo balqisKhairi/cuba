@@ -2,6 +2,6 @@
 <p> {{$data['message']}}</p>
 
 
-This message is send for auto-generate. Do not reply this email.
+Please note: Do not reply to this email. This email is sent from an unattended mailbox and replies are not monitored.
 
 
