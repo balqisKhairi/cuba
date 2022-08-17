@@ -5,6 +5,7 @@
         
          <title>e-JaSDs</title>
         
+         
          <!doctype html>
     <html class="no-js" lang="zxx">
     <head>
@@ -31,6 +32,21 @@
             <link rel="stylesheet" href="{{ asset('admin2/assets/css/style.css') }}">
 </head>
 </head>
+<style>
+            .button:hover {background-color: #ff6680}
+
+.button:active {
+  background-color: #ff6680;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.head-btn2:active {
+  background-color: #f5ec42;
+  box-shadow: 0 5px ;
+  transform: translateY(4px);
+}
+            </style>
 <body>
 <header>
 <div class="header-area header-transparrent">

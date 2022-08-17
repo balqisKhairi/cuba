@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\User;
 use App\Skill;
+use App\Employer;
 
 class Job extends Model
 {

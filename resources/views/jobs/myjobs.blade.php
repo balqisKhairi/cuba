@@ -31,10 +31,16 @@
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
 }
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    color: black;
+}
     </style>
 
 
-<div class="card border-primary " style="max-width: 80rem;">
+<div class="card border-primary " style="max-width: 65rem;">
   <div class="card-header">{{ __('MY JOB') }}</div>
   <div class="card-body">
   
@@ -62,7 +68,8 @@
             <td>{{ $s->jobDesc}}</td>
             <td>{{ $s->jobLocation}}</td>
             <td>{{ $s->jobPay}}</td>
-            <td>{{ $s->skillId}}</td>
+            
+            <td>{{ $s->skill_id}}</td>
             <td>{{ $s->jobType}}</td>
            <td>
             @if($s->jobStatus == 0)
@@ -84,7 +91,7 @@
                     @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger remove-user">Delete</button>
+                    <button type="submit" onclick="return confirm('Are you sure want to delete this?')" class="btn btn-danger remove-user">Delete</button>
                     
                 </form>
             </td>

@@ -3,6 +3,34 @@
 
 
 <style>
+
+.btn-primary1  {
+  background-color: #ffd338;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+ 
+  cursor: pointer;
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.btn-primary1:hover {
+  background-color: #555555;
+  color: white;
+
+}
+
 .card-header{
     color:#000000;
     font-size: 16px;
@@ -48,11 +76,14 @@
         </ul>
     </div>
 @endif
+
+  
 @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
+   
    
 <form action="{{ route('certificates.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -75,9 +106,9 @@
    
 <br></br> &nbsp;
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary1">Submit</button>
         
-                <a class="btn btn-primary" onclick="history.back()"> Back</a>
+                <a class="btn btn-primary1" href="{{ route('studdents.mycerti')}}"> Back</a>
         </div>
     </div>
    

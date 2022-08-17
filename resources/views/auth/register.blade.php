@@ -27,12 +27,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="studIC" class="col-md-4 col-form-label text-md-right">{{ __('IC Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="studIC" type="text" class="form-control @error('studIC') is-invalid @enderror" name="studIC" value="{{ old('studIC') }}" required autocomplete="studIC" autofocus>
 
-                                @error('email')
+                                @error('studIC')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -40,6 +40,35 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="studNum" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="studNum" type="text" class="form-control @error('studNum') is-invalid @enderror" name="studNum" value="{{ old('studNum') }}" required autocomplete="studNum" autofocus>
+
+                                @error('studNum')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="studAddress" rows="4" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="studAddress" type="text" class="form-control @error('studAddress') is-invalid @enderror" name="studAddress" value="{{ old('studAddress') }}" required autocomplete="studAddress" autofocus>
+
+                                @error('studAddress')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                      
 
                         {{--Gender--}}
                         <div class="form-group row">
@@ -49,6 +78,21 @@
                                 <input type="radio" value="male" name="studGender"> Male
                                 <input type="radio" value="female" name="studGender"> Female
                                 @error('studGender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -26,21 +26,18 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="index.html" style="color: rgb(0,0,0);font-size: 14px;"><i class="fas fa-tachometer-alt" style="color: #000000;font-size: 17px;"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-user" style="color: #000000;font-size: 17px;"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="table.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-folder" style="color: #000000;font-size: 17px;"></i><span>Record</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="table.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-folder" style="color: #000000;font-size: 17px;"></i><span>Record</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="login.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-folder-open" style="color: #000000;font-size: 17px;"></i><span>List Of Student</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="register.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-briefcase" style="color: #000000;font-size: 17px;"></i><span>My Job</span></a><a class="nav-link" href="register.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-certificate" style="color: #000000;font-size: 17px;"></i><span>My Certificate</span></a>
-                        <a class="nav-link" href="register.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
-                        <i class="fas fa-sign-out-alt" style="color: #000000;font-size: 17px;"></i>
-                        <span>Logout</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-briefcase" style="color: #000000;font-size: 17px;"></i><span>My Job</span></a><a class="nav-link" href="register.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-certificate" style="color: #000000;font-size: 17px;"></i><span>My Certificate</span></a><a class="nav-link" href="register.html" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;"><i class="fas fa-sign-out-alt" style="color: #000000;font-size: 17px;"></i><span>Logout</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button" style="color: #000000;background: rgba(0,0,0,0.94);"></button></div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
+            <div id="content" style="box-shadow: 0px 0px;">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: var(--bs-gray-900);box-shadow: 0px 0px rgb(0,0,0);">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <nav></nav><button class="btn btn-primary" type="button" style="background: rgb(255,207,35);color: rgb(0,0,0);font-weight: bold;font-style: italic;font-size: 15px;border-style: none;">HOME</button>
+                        <nav></nav><button class="btn btn-primary" type="button" style="background: rgb(255,207,35);color: rgb(0,0,0);font-weight: bold;font-style: italic;font-size: 15px;border-style: none;box-shadow: 0px 0px 10px;">HOME</button>
                         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group"></div>
                         </form>
@@ -135,8 +132,7 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" style="background: rgb(255,207,35);color: rgb(0,0,0);font-weight: bold;">
-                            <i class="fas fa-upload" style="color: #000000;font-size: 17px;"></i>&nbsp;Generate Report</a>
+                        <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" style="background: rgb(255,207,35);color: rgb(0,0,0);font-weight: bold;"><i class="fas fa-upload" style="color: #000000;font-size: 17px;"></i>&nbsp;Generate Report</a>
                     </div>
                 </div>
                 <div class="card" style="border-style: none;">
@@ -148,6 +144,7 @@
                 </div>
             </div>
             <footer class="bg-white sticky-footer">
+                <div class="card shadow mb-5"></div>
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright"><span>e-JaSDs© Brand 2022</span></div>
                 </div>
@@ -155,6 +152,7 @@
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
 </body>
 

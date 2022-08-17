@@ -39,13 +39,13 @@ background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 8
     color:#000000;
 }
 
-.btn-primary:hover {
+.btn-primary1:hover {
   background-color: #555555;
   color: white;
 
 }
 
-.btn-primary  {
+.btn-primary1  {
   background-color: #ffd338;
   border: none;
   color: black;
@@ -81,8 +81,8 @@ top: 13px;
   
 
 
-  <div class="container  h-100">
-    <div class="row justify-content-center align-items-center h-100">
+  <div class="container  h-50">
+    <div class="row justify-content-center align-items-center h-50">
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="card shadow-2-strong card-registration">
           <div class="card-body p-4 p-md-5">
@@ -155,10 +155,10 @@ top: 13px;
             <br>
             <div class="form-outline">
                  <label class="form-label">Skill</label>
-                 <select name="skillId" class="select form-control">
+                 <select name="skill_id" class="select form-control">
                    
                     @foreach(App\Skill::all() as $job)
-                    <option value="{{ $job->skillId}}">{{$job->skillName}}  </option>
+                    <option value="{{ $job->id}}">{{$job->skillName}}  </option>
                    @endforeach
 </select>
                </div>
@@ -193,8 +193,8 @@ top: 13px;
 @endif
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-primary" onclick="history.back()"> Back</a>
+            <button type="submit" class="btn btn-primary1">Submit</button>
+                <a class="btn btn-primary1" onclick="history.back()"> Back</a>
             </div>
         </div>
    

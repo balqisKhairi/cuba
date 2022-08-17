@@ -1,30 +1,43 @@
 @extends('layouts.template')
 @section('content')
+<style>
+    thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    color: black;
+}
 
+h2, .h2 {
+    font-size: calc(1.325rem + 0.9vw);
+    color: black;
+}
+</style>
         <div class="col-lg-12 margin-tb">
             <div class="container">
             <div class="row">
-                
+                <h2>JOBS AVAILABLE</h2>
                 <form action="{{ route('studView') }}" method="get ">
                 <div class="form-inline">
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label> TITLE &nbsp; &nbsp;</label>
                     <input type="text" name="jobName" id="jobName" class="form-control">
-                </div> &nbsp; &nbsp;
+                </div> &nbsp; &nbsp; -->
 
                 <div class="form-group">
                     <label> SKILL&nbsp; &nbsp; </label>
-                    <select name="skillId" id="skillId" class="form-control">
-                        <option> Select Skill</option>
+                    <select name="skill_id" id="skill_filter" class="form-control">
+                    <option> Select Skill</option>
                     @foreach(App\Skill::all() as $cat)
                     <option value="{{$cat->id}}">{{$cat->skillName}}</option>
                     @endforeach
+
                 </select>
             </div>&nbsp; &nbsp;
 
-            <div class="form-group">
+           <!-- <div class="form-group">
                     <label>LOCATION &nbsp; &nbsp;</label>
-                    <select name="jobLocation" id="jobLocation"class="form-control">
+                    <select name="jobLocation" id="location_filter"class="form-control">
                     <option value=""> --SELECT--</option>
                    <option value="JOHOR"> JOHOR</option>
                    <option value="KELANTAN"> KELANTAN</option>
@@ -43,7 +56,8 @@
                    <option value="SELANGOR">SELANGOR</option>
                    <option value="TERENGGANU">TERENGGANU</option>
 </select>
-                </div>&nbsp; &nbsp;
+                </div>&nbsp; &nbsp;-->
+
 
                 <div class="form-group">
                     <button class="btn btn-outline-dark" onlick="search_post()"  >SEARCH</button>
@@ -52,11 +66,7 @@
         </div>
     </div>
     <hr>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+   
     <table class="table table-bordered">
         <tr>
             <th>No</th>
@@ -69,7 +79,8 @@
            <th>Type</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($jobs as $s)
+       
+        @foreach ($posts as $s)
         <tr>
             <td>{{ $s->id }}</td>
             <!--<td>{{ $s->jobPic }}</td> -->
@@ -78,24 +89,26 @@
             <td>{{ $s->jobDesc}}</td>
             <td>{{ $s->jobLocation}}</td>
             <td>{{ $s->jobPay}}</td>
-            <td>{{ $s->skillId}}</td>
+            <td>{{ $s->skill->skillName}}</td>
             <td>{{ $s->jobType}}</td>
             <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">
-   
-
-                @if(Auth::user()->userType=='student')
-                    <a class="btn btn-info" href="{{ route('jobs.show',$s->id) }}">SHOW</a>
-                    @endif
-                 
-                    @csrf
-                  
-                </form>  
+                 <!--<a class="btn btn-info" href="{{ route('jobs.show',$s->id) }}">Apply</a> -->
+                   <a class="btn btn-info" href="{{ route('jobs.show',$s->id) }}">View</a>
+                      @csrf
+                   </form>  
             </td>
         </tr>
         @endforeach
-    </table>
-   
+       
+        </table>
+    <div>
+        <button style="width:100%" href="{{ route('alljobs') }}" class="btn btn-warning btn-lg">Browse All Jobs</button>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -103,13 +116,13 @@
 
 @section('javascript')
 <script type="text/javascript">
- var query=<?php echo json_encode((object)Request::only(['jobName','skillId','jobLocation'])); ?>;
+ var query=<?php echo json_encode((object)Request::query()); ?>;
 
 function search_post(){
     Object.assign(query,{'jobName': $('#jobName').val()});
-    Object.assign(query,{'skillId': $('#skillId').val()});
-    Object.assign(query,{'jobLocation': $('#jobLocatio').val()});
-    window.location.href="{{route('alljobs')}}?"+$.param(query);
+    Object.assign(query,{'skill': $('#skill_filter').val()});
+    Object.assign(query,{'jobLocation': $('#location_filter').val()});
+    window.location.href="{{route('studView')}}?"+$.param(query);
   }
 
   </script>

@@ -14,6 +14,9 @@
                             <i class="fas fa-search fa-sm text-white-50"style="color: #000000;font-size: 17px;"></i>&nbsp;Find Job</a>
                             @endif
                            </div>
+
+                          
+</div>           
 </div>           
 
 

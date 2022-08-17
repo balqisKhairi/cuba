@@ -1,7 +1,7 @@
 @extends('layouts.template')
 @section('content')
     <style>
-.btn-primary  {
+.btn-primary1  {
   background-color: #ffd338;
   border: none;
   color: black;
@@ -22,7 +22,7 @@
   justify-content: center;
 }
 
-.btn-primary:hover {
+.btn-primary1:hover {
   background-color: #555555;
   color: white;
 
@@ -79,10 +79,8 @@
             
       @if($studdent->studStatus == 0)
       <td>Yes</td>
-        @elseif($studdent->studStatus == 1)
+      @else
         <td>Not Yet</td>
-        @else
-        <td>Still Waiting</td>
        @endif
       
     </tr>
@@ -92,7 +90,7 @@
 
 
 <div class="flex-parent jc-center">
-  <button class="btn btn-primary " type="button" onclick="history.back()">BACK</button>
+  <button class="btn btn-primary1 " type="button" onclick="history.back()">BACK</button>
  
 </div>
     </div>

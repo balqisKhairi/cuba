@@ -39,13 +39,13 @@ background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 8
     color:#000000;
 }
 
-.btn-primary:hover {
+.btn-primary1:hover {
   background-color: #555555;
   color: white;
 
 }
 
-.btn-primary  {
+.btn-primary1  {
   background-color: #ffd338;
   border: none;
   color: black;
@@ -81,8 +81,8 @@ top: 13px;
   
 
 
-  <div class="container  h-100">
-    <div class="row justify-content-center align-items-center h-100">
+  <div class="container  h-50">
+    <div class="row justify-content-center align-items-center h-50">
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="card shadow-2-strong card-registration">
           <div class="card-body p-4 p-md-5">
@@ -163,7 +163,7 @@ top: 13px;
                 <select name="studStatus" class="select form-control">
                 <option value="0" @if($studdent->studStatus==0)selected @endif>YES</option>
                   <option value="1" @if($studdent->studStatus==1)selected @endif>NOT YET</option>
-                  <option value="2" @if($studdent->studStatus==2)selected @endif>STILL WAITING</option>
+                 
                 </select>
             </div>
               </div>
@@ -171,8 +171,8 @@ top: 13px;
 
               <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <br>
-              <button type="submit" class="btn-primary">Submit</button>
-                <a class="btn-primary" href="{{ route('studdents.myAcc',$studdent->id) }}"> Back</a>
+              <button type="submit" class="btn-primary1">Submit</button>
+                <a class="btn-primary1" href="{{ route('studdents.myAcc',$studdent->id) }}"> Back</a>
             </div>
         </div>
     </form>

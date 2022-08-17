@@ -42,6 +42,15 @@ Route::put('students/{student}', 'StudentController@update')->name('students.upd
 Route::delete('students/{student}', 'StudentController@destroy')->name('students.destroy');
 Route::resource('subjects', 'SubjectController');
 
+
+//Skill
+Route::get('/skills', 'SkillController@index')->name('skills.index');
+Route::get('/skills/create', 'SkillController@create')->name('skills.create');
+Route::post('/skills', 'SkillController@store')->name('skills.store');
+Route::get('skills/{skill}', 'SkillController@show')->name('skills.show');
+Route::get('skills/{skill}/edit', 'SkillController@edit')->name('skills.edit');
+Route::put('skills/{skill}', 'SkillController@update')->name('skills.update');
+Route::delete('skills/{skill}', 'SkillController@destroy')->name('skills.destroy');
 //Student
 //Route::resource('studdents', 'StuddentController');
 Route::get('/studdents', 'StuddentController@index')->name('studdents.index');
@@ -63,13 +72,13 @@ Route::get('/studdents/myJob', 'StuddentController@myJob')->name('studdents.myJo
 Route::get('/employers', 'EmployerController@index')->name('employers.index');
 //Route::view('employers','employers.emp-register')->name('employers.registration');
 //Route::view('employers','employers.emp-register')->name('employers.emp-register');
-Route::post('employers/create', 'EmployerController@create')->name('employers.emp-register');
+Route::get('employers/create', 'EmployerController@create')->name('employers.emp-register');
 Route::post('employers/store', 'EmployerController@store')->name('employers.store');
 Route::get('employers/myAcc', 'EmployerController@myAcc')->name('employers.myAcc');
 Route::get('employers/destroy', 'EmployerController@destroy')->name('employers.destroy');
 Route::get('employers/{employer}/show', 'EmployerController@show')->name('employers.show');
 Route::get('employers/{employer}/edit', 'EmployerController@edit')->name('employers.edit');
-Route::get('employers/{employer}', 'EmployerController@update')->name('employers.update');
+Route::put('employers/{employer}', 'EmployerController@update')->name('employers.update');
 //Route::resource('employers', 'EmployerController');
 //Job
 //Route::resource('jobs', 'JobController'); //nak show apply kene uncommnt ni /nk tngok application kene comment ni//nk edit kene uncomment ni// nk tngok myjobs also comment
@@ -80,7 +89,7 @@ Route::get('jobs/alljobs', 'JobController@alljobs')->name('alljobs');
 Route::get('jobs/studView', 'JobController@studView')->name('studView');
 Route::get('jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('jobs/store', 'JobController@store')->name('jobs.store');
-Route::get('jobs/destroy', 'JobController@destroy')->name('jobs.destroy');
+Route::delete('jobs/{job}', 'JobController@destroy')->name('jobs.destroy');
 Route::get('jobs/{job}/show', 'JobController@show')->name('jobs.show'); // nk tngok yg ad button apply kene comment ni//nk show detail kena comment ni
 //Route::get('jobs/{id}/{job}', 'JobController@view')->name('jobs.view');  //nak hntr noti kene comment
 Route::get('jobs/{job}/edit', 'JobController@edit')->name('jobs.edit');
@@ -88,9 +97,11 @@ Route::put('jobs/{job}', 'JobController@update')->name('jobs.update');
 Route::get('jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');
 Route::post('jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
 Route::get('jobs/applicant', 'JobController@applicant')->name('jobs.applicant');
-Route::get('jobs/{job}', 'JobController@showCerti')->name('jobs.showCerti');
+//Route::get('jobs/{job}', 'JobController@showCerti')->name('jobs.showCerti');
 Route::post('/applications/{id}', 'JobController@apply')->name('apply');
 Route::put('jobs/{id}/approve', 'JobController@approval')->name('jobs.approve');
+Route::get('jobs/showStati', 'JobController@showStati')->name('jobs.showStati');
+//Route::get('jobs/showStati', 'JobController@showStati')->name('jobs.showStati');
 //Route::resource('jobs', 'JobController');
 
 //Email

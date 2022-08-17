@@ -41,7 +41,9 @@
   cursor: pointer;
   outline: none;
   color: #000000;
-  background-color: #FAFF03;
+  background-color: ##ffd338;
+  background: rgb(255,211,56);
+ 
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #000000;
@@ -57,7 +59,37 @@
   transform: translateY(4px);
 }
 
+.head-btn2:active {
+  background-color: #f5ec42;
+  box-shadow: 0 5px ;
+  transform: translateY(4px);
+}
 
+.head-btn2 {
+    background: #ffec3f;
+    border: 1px solid #ffec3f;
+    color: #000000;
+    background-color: #ffd338;
+    font-size: 16px;
+    margin: 6px 4px;
+    cursor: pointer;
+}
+.slider-height {
+    /* min-height: 850px; */
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.slider-area .hero__caption h1 {
+    font-size: 80px;
+    font-weight: 900;
+    margin-bottom: 78px;
+    color: #f9e132;
+    line-height: 1.2;
+    text-shadow: 0px 1px 16px black;
+}
 </style>
   
         </head>
@@ -131,7 +163,7 @@
         <div class="slider-area ">
             <!-- Mobile Menu -->
            
-                <div class="single-slider slider-height d-flex align-items-center" data-background="{{ asset('admin2/assets/img/hero/pic1.jpg') }}">
+                <div class="single-slider slider-height d-flex align-items-center" data-background="{{ asset('hai2/assets/img/isc.jpg') }}">
                     <div class="container">
                         <div class="row">
                             <div class="col text-center">
@@ -212,13 +244,8 @@
                 <div class="row d-flex justify-content-between">
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                        <div class="single-footer-caption mb-0">
-                         <div class="single-footer-caption mb-30">
-                             <div class="footer-tittle">
-                                 <h4>About Us</h4>
-                                 <div class="footer-pera">
-                                     <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
-                                </div>
-                             </div>
+                       
+                            
                          </div>
 
                        </div>

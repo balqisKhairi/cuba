@@ -66,8 +66,8 @@ top: 13px;
 }
 </style>
 
-<div class="container  h-100">
-    <div class="row justify-content-center align-items-center h-100">
+<div class="container  h-50">
+    <div class="row justify-content-center align-items-center h-50">
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="card shadow-2-strong card-registration">
           <div class="card-body p-4 p-md-5">
@@ -111,17 +111,6 @@ top: 13px;
         </div>
        
 
-        <hr class="mx-n3">
-        <div class="row align-items-center py-3">
-              <div class="col-md-3 ps-5">
-                <h6 class="mb-0">Full name</h6>
-                 </div>
-              <div class="col-md-9 pe-5">
-
-                <input type="text" class="form-control form-control-lg" />
-
-              </div>
-            </div>
 
             <hr class="mx-n3">
             <div class="row align-items-center py-3">
@@ -187,7 +176,7 @@ top: 13px;
                 <h6 class="mb-0">Skill</h6>
               </div>
               <div class="col-md-9 pe-5">
-              <select name="skillId" class="form-control">
+              <select name="skill_id" class="form-control">
               <option selected="true" disabled="disabled"> --SELECT--</option>
                     @foreach(App\Skill::all() as $cat)
                     <option value="{{$cat->id}}">{{$cat->skillName}}  </option>

@@ -20,4 +20,4 @@
     <link rel="stylesheet" href="{{ asset('hai2/assets/fonts/fontawesome5-overrides.min.css') }}">
     <link rel="stylesheet" href="{{ asset('hai2/assets/css/Navbar-Right-Links-icons.css') }}">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
+   </head>

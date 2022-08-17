@@ -1,26 +1,58 @@
 @extends('layouts.template')
 @section('content')
 <style>
-.table {
 
-    color: #000000;
+.card-header{
+    color:#000000;
+    font-size: 16px;
 }
 
-h2, .h2 {
-    font-size: calc(1.325rem + 0.9vw);
-    color: #000000;
+.btn-success{
+    background: rgb(255,207,35);
+    color: rgb(0,0,0)
+}
+.card {
+         /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        margin-left: 50px;
 }
 
-</style>
-<div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>List of Certificate</h2>
-            </div>
-           
+.card-body{
+       /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+       
+}
+
+h3, .h3 {
+    font-size: calc(1.3rem + 0.6vw);
+    color:#000000;
+}
+.table-bordered{
+        /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    color: black;
+}
+    </style>
+
+
+<div class="row justify-content-center"  style="max-width: 70rem;">
+    <div class="col-md-12">
+
+    <div class="card">
+            <div class="card-header"><h3> List of Certificates</h3></div>
+
             
-        </div>
-    </div>
+            <div class="card-body"  style="max-width: 80rem;">
+         <table class="table table-bordered">
+      
    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -28,8 +60,6 @@ h2, .h2 {
         </div>
     @endif
    
-    <table class="table table-bordered" style= color:black;>
-        <tr>
             <th>No</th>
             <th>Student ID</th>
             <th>Certificate</th>
@@ -69,6 +99,11 @@ h2, .h2 {
     </table>
    
 </div>
+</div>
+</div>
+</div>
+</div>
+
 
 @endsection
 

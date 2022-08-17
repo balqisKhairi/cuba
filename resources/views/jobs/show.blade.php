@@ -1,15 +1,47 @@
 @extends('layouts.main')
 @section('content')
+
+<style>
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ asset('admin2/assets/img/hero/about.jpg') }}");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  filter: blur;
+}
+
+.hero-text {
+   
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:#FFFFFF;
+}
+
+.section-overly {
+    /* position: relative; */
+    z-index: 0;
+}
+
+h2{
+    color: #ffffff;
+}
+    </style>
 <main>
 
 <!-- Hero Area Start-->
-<div class="slider-area ">
-<div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{{ asset('admin2/assets/img/hero/about.jpg') }}">
+<div class="hero-image">
+<div class="single-slider section-overly slider-height2 d-flex align-items-center" >
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <div class="hero-cap text-center">
-                    <h2>{{$job->jobName}}</h2>
+                <div class="hero-text">
+                    <h2 style="font-size:50px" color="#FFFFFF">{{$job->jobName}}</h2>
                 </div>
             </div>
         </div>
@@ -18,7 +50,7 @@
 </div>
 <!-- Hero Area End -->
 <!-- job post company Start -->
-<div class="job-post-company pt-120 pb-120">
+<div class="job-post-company pt-20 pb-20">
     <div class="container">
         <div class="row justify-content-between">
             <!-- Left Content -->
@@ -27,17 +59,24 @@
                 <div class="single-job-items mb-50">
                     <div class="job-items">
                         <div class="company-img company-img-details">
-                            <a href="#"><img src="{{ asset($job->jobPic) }}" width='50' height='50' alt=""></a>
+                            <a href="#"><img src="{{ asset($job->jobPic) }}" width='100' height='100' alt=""></a>
                         </div>
                         <div class="job-tittle">
                             <a href="#">
                                 <h4>{{$job->jobName}}</h4>
                             </a>
                             <ul>
-                                <li>Creative Agency</li>
+                               
                                 <li><i class="fas fa-map-marker-alt"></i>{{$job->jobLocation}}</li>
-                                <li><i class="fas fa-map-marker-alt"></i>RM{{$job->jobPay}}</li>
-                                <li><i class="fas fa-map-marker-alt"></i>{{$job->jobStatus}}</li>
+                                <li><i class="fas fa-dollar-sign"></i>RM{{$job->jobPay}}</li>
+
+                                @if($job->jobStatus == 0)
+                                <li><i class="fas fa-clock"></i>PENDING</li>
+                                @elseif($job->jobStatus == 1)
+                                <li><i class="fas fa-check"></i>APPROVED</li>
+                                @else
+                                <li><i class="fas fa-times"></i>REJECTED</li>
+                                @endif
                             </ul>
                         </div>
                     </div>

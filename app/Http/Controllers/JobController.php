@@ -7,6 +7,7 @@ use App\Employer;
 use App\User;
 use App\Studdent;
 use App\Certificate;
+use App\Skill;
 use Auth;
 use Notification;
 use App\Mail\AcceptMail;
@@ -76,7 +77,7 @@ class JobController extends Controller
         $requestData['jobDesc']= $request->jobDesc;
         $requestData['jobLocation']= $request->jobLocation;
         $requestData['jobPay']= $request->jobPay;
-        $requestData['skillId']= $request->skillId;
+        $requestData['skill_id']= $request->skill_id;
         $requestData['jobType']= $request->jobType;
         $requestData['jobStatus']= $request->jobStatus;
 
@@ -116,34 +117,89 @@ class JobController extends Controller
    
 
     public function alljobs(Request $request){
+        $skills = DB::table('jobs')->select('skill_id')->distinct()->get()->pluck('skill_id');
+            $locations = DB::table('jobs')->select('jobLocation')->distinct()->get()->pluck('jobLocation');
 
-        $keyword = request ('jobName');
-        $skill = request('skillId');
-        $address = request ('jobLocation');
 
-        if($keyword||$skill||$address){
-            $jobs = Job::where('jobName','LIKE','%'.$keyword.'%')
-                ->orWhere('skillId',$skill)
-                ->orWhere('jobLocation',$address)
-                ->paginate(5);
-            return view('jobs.alljobs',compact('jobs'));
-        }
-        else{
-            $jobs = Job::paginate(0);
-            return view('jobs.alljobs',compact('jobs'))->with('success','No Result Found');;
-        }
+            $job = Job::query();
+
+            if($request->filled('jobName')){
+                $job->where('jobName',$request->jobName);
+            }
+            if($request->filled('skill_id')){
+                $job->where('skill_id',$request->skill_id);
+            }
+                    
+        return view('jobs.alljobs', [
+        'skills' => $skills,
+        'locations' => $locations,
+        //'jobs'=>$jobs,
+        'jobs' => $job->get(),
         
-    }
+        ]);
+          
+        
+           }
+        
+        
 
-    public function searchJob(Request $request){
-        $keyword = $request->get('keyword');
-        $users = Job::where('jobName','LIKE','%'.$keyword.'%')
-        ->orWhere('skillId','LIKE','%'.$keyword.'%')
-        ->orWhere('jobLocation','LIKE','%'.$keyword.'%')
-        ->limit(5)->get();
+    /**public function studView(Request $request){
 
-    return response()->json($users); 
-    }
+        $data['skills']=Skill::orderBy('id','asc')->get();
+       $data['jobs']=Job::orderBy('id','asc')->get();
+        //$data['jobs']=Job::orderBy('id','jobName')->get();
+        $post_query=Job::where('user_id',auth()->id());
+
+        if($request->skill){
+            $post_query->whereHas('skill',function($q) use ($request){
+                $q->where('skillName',$request->skill);
+            });
+        }
+       if($request->jobLocation){
+            $post_query->where('jobLocation',$request->jobLocation);
+            }
+        
+
+       if ($request->jobName){
+            $post_query->where('jobName','LIKE','%'.$request->jobName.'%');
+
+            }
+            $data['posts'] =$post_query->orderBy('id','ASC')->paginate(5);
+            return view('jobs.studView',$data);
+        
+        
+} **/
+
+public function studView(Request $request){
+    $skills = DB::table('jobs')->select('skill_id')->distinct()->get()->pluck('skill_id');
+$locations = DB::table('jobs')->select('jobLocation')->distinct()->get()->pluck('jobLocation');
+
+
+$post = Job::query();
+
+if($request->filled('jobName')){
+    $post->where('jobName',$request->jobName);
+}
+if($request->filled('skill_id')){
+    $post->where('skill_id',$request->skill_id);
+}
+
+if($request->filled('jobLocation')){
+    $post->where('jobLocation',$request->jobLocation);
+}
+
+
+return view('jobs.studView', [
+'skills' => $skills,
+'locations' => $locations,
+//'jobs'=>$jobs,
+'posts' => $post->get(),
+
+]);
+  
+
+   }
+
 
     public function emailView($id){
 
@@ -189,15 +245,15 @@ class JobController extends Controller
         return view('jobs.show',compact('job'));
     }
     
-    public function studView(Request $request)
+    /**public function studView(Request $request)
     {
         $keyword = request ('jobName');
-        $skill = request('skillId');
+        $skill = request('skill_id');
         $address = request ('jobLocation');
 
         if($keyword||$skill||$address){
             $jobs = Job::where('jobName','LIKE','%'.$keyword.'%')
-                ->orWhere('skillId',$skill)
+                ->orWhere('skill_id',$skill)
                 ->orWhere('jobLocation',$address)
                 ->paginate(5);
             return view('jobs.studView',compact('jobs'));
@@ -206,9 +262,9 @@ class JobController extends Controller
             $jobs = Job::paginate(0);
             return view('jobs.studView',compact('jobs'))->with('success','No Result Found');;
         }
-        
        
-    }
+       
+    } **/
     
 
     /**
@@ -235,7 +291,7 @@ class JobController extends Controller
     {
         $job->update($request->all());
         
-        return redirect()->route('jobs.myjobs')
+        return redirect()->back()
                         ->with('success','Job updated successfully');
     }
 
@@ -252,4 +308,18 @@ class JobController extends Controller
        return redirect()->route('jobs.index')
        ->with('success','Job deleted successfully');
     }
+
+    public function showStati(){
+        $totalStud = Studdent ::count();
+        $totalEmplo = Employer ::count();
+        $totalUser = User ::count();
+        $getJob = Studdent::where('studStatus','0')->count();
+        $notJob = Studdent::where('studStatus','1')->count();
+        $needcerti = Certificate::where('certiStatus','')->count();
+        $needjob = Job::where('jobStatus','')->count();
+
+        return view('jobs.statics',compact('getJob','notJob','totalStud','totalEmplo','totalUser','needcerti','needjob'));
 }
+
+}
+

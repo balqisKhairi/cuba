@@ -5,24 +5,27 @@
             <div class="container">
             <div class="row">
                 <h2>JOBS AVAILABLE</h2>
+</div>
                 <form action="{{ route('alljobs') }}" method="get ">
                 <div class="form-inline">
-                <div class="form-group">
+               <!-- <div class="form-group">
                     <label> TITLE &nbsp; &nbsp;</label>
                     <input type="text" name="jobName" id="jobName" class="form-control">
-                </div> &nbsp; &nbsp;
+                </div> &nbsp; &nbsp; -->
 
                 <div class="form-group">
-                    <label> SKILL&nbsp; &nbsp; </label>
-                    <select name="skillId" id="skillId" class="form-control">
-                        <option> Select Skill</option>
+                   <label> SKILL&nbsp; &nbsp; </label>
+                    <select name="skill_id" id="skill" class="form-control">
+                    <option value=""> --SELECT--</option>
                     @foreach(App\Skill::all() as $cat)
                     <option value="{{$cat->id}}">{{$cat->skillName}}</option>
                     @endforeach
-                </select>
-            </div>&nbsp; &nbsp;
 
-            <div class="form-group">
+
+                </select>
+            </div>&nbsp; &nbsp; 
+
+           <!--  <div class="form-group">
                     <label>LOCATION &nbsp; &nbsp;</label>
                     <select name="jobLocation" id="jobLocation"class="form-control">
                     <option value=""> --SELECT--</option>
@@ -43,7 +46,7 @@
                    <option value="SELANGOR">SELANGOR</option>
                    <option value="TERENGGANU">TERENGGANU</option>
 </select>
-                </div>&nbsp; &nbsp;
+                </div>&nbsp; &nbsp;-->
 
                 <div class="form-group">
                     <button class="btn btn-outline-dark" onlick="search_post()"  >SEARCH</button>
@@ -78,7 +81,7 @@
             <td>{{ $s->jobDesc}}</td>
             <td>{{ $s->jobLocation}}</td>
             <td>{{ $s->jobPay}}</td>
-            <td>{{ $s->skillId}}</td>
+            <td>{{$s->skill->skillName}}</td>
             <td>{{ $s->jobType}}</td>
             <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">
@@ -87,7 +90,7 @@
                     <!--<a class="btn btn-info" href="{{ route('jobs.show',$s->id) }}">Apply</a> -->
                   
                    
-                    <a class="btn btn-info" href="{{ route('register') }}">View</a>
+                    <a class="btn btn-info" href="{{ route('login') }}">View</a>
 
                    
                     @csrf
@@ -108,13 +111,11 @@
 @section('javascript')
 <script type="text/javascript">
  var query=<?php echo json_encode((object)Request::only(['jobName','skillId','jobLocation'])); ?>;
-
 function search_post(){
     Object.assign(query,{'jobName': $('#jobName').val()});
     Object.assign(query,{'skillId': $('#skillId').val()});
     Object.assign(query,{'jobLocation': $('#jobLocatio').val()});
     window.location.href="{{route('alljobs')}}?"+$.param(query);
   }
-
   </script>
 @endsection

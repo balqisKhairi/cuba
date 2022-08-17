@@ -2,7 +2,7 @@
 @section('content')
 
 <style>
-.btn-primary  {
+.btn-primary1  {
   background-color: #ffd338;
   border: none;
   color: black;
@@ -23,7 +23,7 @@
   justify-content: center;
 }
 
-.btn-primary:hover {
+.btn-primary1:hover {
   background-color: #555555;
   color: white;
 
@@ -36,13 +36,19 @@
 .table table-hover{
     
 }
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    color: black;
+}
 </style>
 
 
 <div class="card mb-3">
   <h3 class="card-header" align="center" >Company Details</h3>
-  <div class="card-body">
-  <table class="table table-hover">
+  <div class="card-body" >
+  <table class="table table-hover" >
   
   <tbody>
     <tr class="table-warning">
@@ -70,13 +76,13 @@
    
   </tbody>
 </table>
+</div>
+    </div>
 
 
 <div class="flex-parent jc-center">
-  <button class="btn btn-primary " type="button" onclick="history.back()">BACK</button>
- 
+  <button class="btn btn-primary1 " type="button" onclick="history.back()">BACK</button>
 </div>
-    </div>
-</div>
+
 @endsection
     

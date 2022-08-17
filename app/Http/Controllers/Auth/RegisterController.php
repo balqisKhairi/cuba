@@ -76,8 +76,12 @@ class RegisterController extends Controller
             'user_id'=>$user->id,
             'studName'=>request('name'),
             'studGender'=>request('studGender'),
+            'studNum'=>request('studNum'),
+            'studAddress'=>request('studAddress'),
+            'studIC'=>request('studIC'),
             'studEmail'=>request('email'),
             'studPassword'=>request('password'),
+            'studStatus'=>request('studStatus'),
         ]);
 
         return $user;

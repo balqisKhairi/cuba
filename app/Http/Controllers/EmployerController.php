@@ -115,7 +115,7 @@ class EmployerController extends Controller
     {
         $employer->update($request->all());
   
-        return redirect()->route('employers.index')
+        return redirect()->route('employers.myAcc')
                         ->with('success','employer updated successfully');
     }
 
@@ -129,7 +129,7 @@ class EmployerController extends Controller
     {
         $employer->delete();
 
-        return redirect()->route('employers.index')
+        return redirect()->back()
         ->with('success','employer deleted successfully');
     }
 

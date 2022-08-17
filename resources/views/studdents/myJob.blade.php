@@ -32,6 +32,12 @@
 .table-one{
     background-color:#000000;
 }
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    color: black;
+}
     </style>
 
 <div class="card border-primary " style="max-width: 60rem;">
@@ -64,7 +70,7 @@
                <td>{{$s->jobLocation}}</td>
                <td>{{$s->jobPay}}</td>
             
-               <td>{{$s->skillId}}</td>
+               <td>{{$s->skill_id}}</td>
             
                <td>{{$s->jobType}}</td>
                <td>

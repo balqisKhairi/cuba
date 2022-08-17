@@ -27,7 +27,7 @@ class StuddentController extends Controller
         $studdents = Studdent::all();
         //dd($students);
         return view('studdents.index',compact('studdents'));
-       // return view('subjects.index');
+       
     }
 
     /**
@@ -166,7 +166,7 @@ public function myAcc(){
        //->join('studdents', 'studdents.user_id','job_user.user_id')
        ->join('jobs', 'jobs.id','job_user.id')
     ->select('jobs.*','jobs.id', 'jobs.jobPic','jobs.jobName','jobs.jobDesc','jobs.jobLocation','jobs.jobPay'
-       ,'jobs.skillId','jobs.jobType')
+       ,'jobs.skill_id','jobs.jobType')
 
        ->get();
         return view('studdents.myJob',compact('studdents'));

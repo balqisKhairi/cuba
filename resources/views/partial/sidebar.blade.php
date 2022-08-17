@@ -8,11 +8,11 @@
             <div class="container-fluid d-flex flex-column p-0">
               
     <!-- Brand Logo -->
-     <img src="{{ asset('hai2/assets/img/1.png') }}" alt="logo1 Logo" width="100px" left="50px" class="brand-image img-circle elevation-3" >
+     <img src="{{ asset('hai2/assets/img/1.png') }}" alt="logo1 Logo" width="150px" height="100px" left="50px" class="brand-image img-circle elevation-3" >
  
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="index.html" style="color: rgb(0,0,0);font-size: 14px;">
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: rgb(0,0,0);font-size: 14px;">
                     <i class="fas fa-tachometer-alt" style="color: #000000;font-size: 17px;"></i>
                     <span>Dashboard</span></a></li>
 
@@ -22,12 +22,8 @@
                     <i class="fas fa-user" style="color: #000000;font-size: 17px;"></i>
                     <span>Profile</span></a></li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{ route('studdents.myJob') }}" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
-                    <i class="fas fa-briefcase" style="color: #000000;font-size: 17px;"></i>
-                    <span>My Application</span></a>
 
-
-                    <a class="nav-link" href="{{ route('studdents.mycerti')}}" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('studdents.mycerti')}}" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
                     <i class="fas fa-certificate" style="color: #000000;font-size: 17px;"></i>
                     <span>My Certificate</span></a>
 
@@ -44,10 +40,6 @@
                     <span>My Job</span></a>
 
 
-                    <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
-                    <i class="fas fa-folder" style="color: #000000;font-size: 17px;"></i>
-                    <span>Record</span></a>
 
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
@@ -60,10 +52,19 @@
 
                     @if(Auth::user()->userType=='admin')
 
+
+                    <ul class="nav nav-treeview">
                     <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
-                    <i class="fas fa-folder" style="color: #000000;font-size: 17px;"></i>
-                    <span>Record</span></a></li>
+                    <a class="nav-link" href="{{ route('jobs.showStati') }}" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
+                    <i class="fas fa-folder-open" style="color: #000000;font-size: 17px;"></i>
+                    <span>Statistics</span></a></li>
+
+
+                    <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('skills.index') }}" style="color: rgba(0,0,0,0.8);font-weight: bold;font-size: 14px;">
+                    <i class="fas fa-folder-open" style="color: #000000;font-size: 17px;"></i>
+                    <span>List Of Skills</span></a></li>
 
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
@@ -104,9 +105,7 @@
                 </li>
                 </ul>
 
-                <div class="text-center d-none d-md-inline">
-                    <button class="btn rounded-circle border-0" id="sidebarToggle" type="button" style="color: #000000;background: rgba(0,0,0,0.94);"></button></div>
-            </div>
+                
         </nav>
        
        

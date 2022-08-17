@@ -30,11 +30,18 @@
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
 }
+
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    color: black;
+}
     </style>
 
 
 
-<div class="row justify-content-center"  style="max-width: 80rem;">
+<div class="row justify-content-center"  style="max-width: 70rem;">
     <div class="col-md-12">
         @foreach($applicants as $applicant)
             <div class="card">
