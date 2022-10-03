@@ -118,89 +118,52 @@ class JobController extends Controller
 
     public function alljobs(Request $request){
         $skills = DB::table('jobs')->select('skill_id')->distinct()->get()->pluck('skill_id');
-            $locations = DB::table('jobs')->select('jobLocation')->distinct()->get()->pluck('jobLocation');
+        $locations = DB::table('jobs')->select('jobLocation')->distinct()->get()->pluck('jobLocation');
+        $post = Job::query();
 
+        if($request->filled('jobName')){
+        $post->where('jobName',$request->jobName);
+        }
+        if($request->filled('skill_id')){
+            $post->where('skill_id',$request->skill_id);
+        }
 
-            $job = Job::query();
-
-            if($request->filled('jobName')){
-                $job->where('jobName',$request->jobName);
-            }
-            if($request->filled('skill_id')){
-                $job->where('skill_id',$request->skill_id);
-            }
-                    
+        if($request->filled('jobLocation')){
+            $post->where('jobLocation',$request->jobLocation);
+        }
         return view('jobs.alljobs', [
         'skills' => $skills,
         'locations' => $locations,
         //'jobs'=>$jobs,
-        'jobs' => $job->get(),
-        
+        'posts' => $post->get(),
+
         ]);
-          
-        
-           }
-        
-        
-
-    /**public function studView(Request $request){
-
-        $data['skills']=Skill::orderBy('id','asc')->get();
-       $data['jobs']=Job::orderBy('id','asc')->get();
-        //$data['jobs']=Job::orderBy('id','jobName')->get();
-        $post_query=Job::where('user_id',auth()->id());
-
-        if($request->skill){
-            $post_query->whereHas('skill',function($q) use ($request){
-                $q->where('skillName',$request->skill);
-            });
-        }
-       if($request->jobLocation){
-            $post_query->where('jobLocation',$request->jobLocation);
-            }
-        
-
-       if ($request->jobName){
-            $post_query->where('jobName','LIKE','%'.$request->jobName.'%');
-
-            }
-            $data['posts'] =$post_query->orderBy('id','ASC')->paginate(5);
-            return view('jobs.studView',$data);
-        
-        
-} **/
-
-public function studView(Request $request){
-    $skills = DB::table('jobs')->select('skill_id')->distinct()->get()->pluck('skill_id');
-$locations = DB::table('jobs')->select('jobLocation')->distinct()->get()->pluck('jobLocation');
-
-
-$post = Job::query();
-
-if($request->filled('jobName')){
-    $post->where('jobName',$request->jobName);
-}
-if($request->filled('skill_id')){
-    $post->where('skill_id',$request->skill_id);
-}
-
-if($request->filled('jobLocation')){
-    $post->where('jobLocation',$request->jobLocation);
-}
-
-
-return view('jobs.studView', [
-'skills' => $skills,
-'locations' => $locations,
-//'jobs'=>$jobs,
-'posts' => $post->get(),
-
-]);
+  }
   
+    public function studView(Request $request){
+    $skills = DB::table('jobs')->select('skill_id')->distinct()->get()->pluck('skill_id');
+    $locations = DB::table('jobs')->select('jobLocation')->distinct()->get()->pluck('jobLocation');
+     $post = Job::query();
 
-   }
+    if($request->filled('jobName')){
+        $post->where('jobName',$request->jobName);
+    }
+    if($request->filled('skill_id')){
+        $post->where('skill_id',$request->skill_id);
+    }
 
+    if($request->filled('jobLocation')){
+        $post->where('jobLocation',$request->jobLocation);
+    }
+    return view('jobs.studView', [
+    'skills' => $skills,
+    'locations' => $locations,
+    //'jobs'=>$jobs,
+    'posts' => $post->get(),
 
+    ]);
+    
+    }
     public function emailView($id){
 
         $data = User::find($id);
@@ -213,14 +176,7 @@ return view('jobs.studView', [
         $data = array(
             'message'=> $request->message
         );
-        //$user = Job::find($id);
-       // $user->users()->attach(Auth::user()->id);
-        //$details=[
-                //'greeting'=> $request->greeting,
-                //'body'=> $request->body, 
-                //'endpart'=> $request->endpart,
-       // ];
-
+        
        // Notification::send($data,new MyFirstNotification($details));
         //$jobId->users()->attach(Auth::user()->id);
         Mail::to($user->email)->send(new AcceptMail($data));
@@ -245,27 +201,7 @@ return view('jobs.studView', [
         return view('jobs.show',compact('job'));
     }
     
-    /**public function studView(Request $request)
-    {
-        $keyword = request ('jobName');
-        $skill = request('skill_id');
-        $address = request ('jobLocation');
-
-        if($keyword||$skill||$address){
-            $jobs = Job::where('jobName','LIKE','%'.$keyword.'%')
-                ->orWhere('skill_id',$skill)
-                ->orWhere('jobLocation',$address)
-                ->paginate(5);
-            return view('jobs.studView',compact('jobs'));
-        }
-        else{
-            $jobs = Job::paginate(0);
-            return view('jobs.studView',compact('jobs'))->with('success','No Result Found');;
-        }
-       
-       
-    } **/
-    
+   
 
     /**
      * Show the form for editing the specified resource.

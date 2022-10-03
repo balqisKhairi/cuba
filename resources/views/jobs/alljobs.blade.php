@@ -15,7 +15,7 @@
 
                 <div class="form-group">
                    <label> SKILL&nbsp; &nbsp; </label>
-                    <select name="skill_id" id="skill" class="form-control">
+                    <select name="skill_id" id="skill_filter" class="form-control">
                     <option value=""> --SELECT--</option>
                     @foreach(App\Skill::all() as $cat)
                     <option value="{{$cat->id}}">{{$cat->skillName}}</option>
@@ -68,11 +68,11 @@
             <th>Desc</th>
             <th>Location</th>
            <th>Salary</th>
-           <th>Skill Required</th>
+          <!-- <th>Skill Required</th>-->
            <th>Type</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($jobs as $s)
+        @foreach ($posts as $s)
         <tr>
             <td>{{ $s->id }}</td>
             <!--<td>{{ $s->jobPic }}</td> -->
@@ -81,7 +81,7 @@
             <td>{{ $s->jobDesc}}</td>
             <td>{{ $s->jobLocation}}</td>
             <td>{{ $s->jobPay}}</td>
-            <td>{{$s->skill->skillName}}</td>
+            <!--<td>{{ $s->skill_id}}</td>-->
             <td>{{ $s->jobType}}</td>
             <td>
                 <form action="{{ route('jobs.destroy',$s->id) }}" method="POST">
@@ -110,12 +110,14 @@
 
 @section('javascript')
 <script type="text/javascript">
- var query=<?php echo json_encode((object)Request::only(['jobName','skillId','jobLocation'])); ?>;
+ var query=<?php echo json_encode((object)Request::query()); ?>;
+
 function search_post(){
     Object.assign(query,{'jobName': $('#jobName').val()});
-    Object.assign(query,{'skillId': $('#skillId').val()});
-    Object.assign(query,{'jobLocation': $('#jobLocatio').val()});
-    window.location.href="{{route('alljobs')}}?"+$.param(query);
+    Object.assign(query,{'skill': $('#skill_filter').val()});
+    Object.assign(query,{'jobLocation': $('#location_filter').val()});
+    window.location.href="{{route('studView')}}?"+$.param(query);
   }
+
   </script>
 @endsection
