@@ -107,7 +107,7 @@
 
 
 @endsection
-
+<!--try test-->
 @section('javascript')
 <script type="text/javascript">
  var query=<?php echo json_encode((object)Request::query()); ?>;
